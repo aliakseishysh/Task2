@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="Medicines"
+    xmlns:tns="Medicines"
+    elementFormDefault="qualified"
+    >
+
+    <!-- ROOT ELEMENT -->
+    <element name="medicines">
+        <complexType>
+            <sequence>
+                <element ref="tns:medicine" minOccurs="0" maxOccurs="100"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <!-- CHILD ELEMENT OF ROOT -->
+    <complexType name="medicine-type">
+        <sequence>
+            <element ref="tns:name"/>
+            <element ref="tns:pharm"/>
+            <element ref="tns:group"/>
+            <element ref="tns:analogs"/>
+            <element ref="tns:versions"/>
+        </sequence>
+        <attribute ref="tns:id" use="required"/>
+    </complexType>
+
+
+    <!-- ELEMENTS FOR TYPES -->
+    <element name="medicine" type="tns:medicine-type"/>
+    <element name="name" type="tns:name-type"/>
+    <element name="pharm" type="tns:pharm-type"/>
+    <element name="group" type="tns:group-type"/>
+    <!-- ANALOGS: medicine.analogs -->
+    <element name="analogs" type="tns:analogs-type"/>
+    <element name="analog" type="tns:analog-type"/>
+    <!-- VERSIONS: medicine.versions -->
+    <element name="versions" type="tns:versions-type"/>
+    <element name="version" type="tns:version-type"/>
+    <!-- CERTIFICATE: medicine.versions.version.certificate -->
+    <element name="certificate" type="tns:certificate-type"/>
+    <element name="certificate-number" type="long"/>
+    <element name="certificate-issued-date-time" type="dateTime"/> <!-- The dateTime is specified in the following form "YYYY-MM-DDThh:mm:ss" -->
+    <element name="certificate-expires-date-time" type="dateTime"/>
+    <element name="certificate-registered-organization" type="string"/>
+    <!-- PACKAGE: medicine.versions.version.package -->
+    <element name="package" type="tns:package-type"/>
+    <element name="package-type" type="tns:package-type-enum-type"/>
+    <element name="package-elements-count-in" type="tns:package-elements-count-in-type"/>
+    <element name="package-price" type="tns:package-price-type"/> <!-- price of package in euro -->
+    <!-- DOSAGE: medicine.versions.version.dosage -->
+    <element name="dosage" type="tns:dosage-type"/>
+    <element name="dosage-active-agent" type="int"/> <!-- amount of active agent in milligrams -->
+    <element name="dosage-maximum-use-per-day" type="int"/> <!-- amount of elements in package to use per day -->
+    
+    <!-- ATTRIBUTES FOR TYPES -->
+    <attribute name="id" type="tns:medicine-id-type"/>
+    <attribute name="distribution-version" type="tns:distribution-versions-enum-type" default="pills"/>
+    
+
+    <!-- ID OF SPECIFIC MEDICINE -->
+    <simpleType name="medicine-id-type">
+        <restriction base="ID">
+            <pattern value="i[1-9]{1}[0-9]*"/>
+            <maxLength value="9"/>
+        </restriction>
+    </simpleType>
+
+    <!-- TYPE OF `name` ELEMENT -->
+    <simpleType name="name-type">
+        <restriction base="string"> 
+            <minLength value="1"/>
+            <maxLength value="100"/>
+        </restriction>
+    </simpleType>
+
+    <!-- TYPE OF `analog` ELEMENT -->
+    <simpleType name="analog-type">
+        <restriction base="string"> 
+            <minLength value="1"/>
+            <maxLength value="100"/>
+        </restriction>
+    </simpleType>
+
+    <!-- TYPE OF `pharm` ELEMENT -->
+    <simpleType name="pharm-type">
+        <restriction base="string"> 
+            <minLength value="1"/>
+            <maxLength value="100"/>
+        </restriction>
+    </simpleType>
+
+    <!-- TYPE OF `group` ELEMENT -->
+    <simpleType name="group-type">
+        <restriction base="string">
+            <enumeration value="Vegetotropic medicines"/>
+            <enumeration value="Hematotropic medicines"/>
+            <enumeration value="Homeopathic medicines"/>
+            <enumeration value="Hormones and their antagonists"/>
+            <enumeration value="Diagnostic medicines"/>
+            <enumeration value="Immunotropic medicines"/>
+            <enumeration value="Intermediates medicines"/>
+            <enumeration value="Metabolics medicines"/>
+            <enumeration value="Neurotropic medicines"/>
+            <enumeration value="Non-narcotic analgesics"/>
+            <enumeration value="Organotropic medicines"/>
+            <enumeration value="Antimicrobial, antiparasitic and antihelminthic medicines"/>
+            <enumeration value="Antineoplastic medicines"/>
+            <enumeration value="Regenerants and reparants"/>
+            <enumeration value="Biologically active food additives"/>
+            <enumeration value="Different medicines"/>
+        </restriction>
+    </simpleType>
+
+    <!-- TYPE OF `analogs` ELEMENT -->
+    <complexType name="analogs-type">
+        <sequence>
+            <element ref="tns:analog" minOccurs="0" maxOccurs="100"/>
+        </sequence>
+    </complexType>
+
+    <!-- TYPE OF `version` ELEMENT -->
+    <complexType name="version-type">
+        <sequence>
+            <element ref="tns:certificate"/>
+            <element ref="tns:package"/>
+            <element ref="tns:dosage" minOccurs="0" maxOccurs="5"/>
+        </sequence>
+        <attribute ref="tns:distribution-version" use="required"/>
+    </complexType>
+
+    <!-- TYPE OF `versions` ELEMENT (includes `version`) -->
+    <complexType name="versions-type">
+        <sequence>
+            <element ref="tns:version" minOccurs="1" maxOccurs="50"/>
+        </sequence>
+    </complexType>
+
+    <!-- TYPE OF ATTRIBUTE `version` OF `version` ELEMENT in `versions` ELEMENT -->
+    <simpleType name="distribution-versions-enum-type">
+        <restriction base="string">
+            <enumeration value="ointment"/>
+            <enumeration value="cream"/>
+            <enumeration value="pills"/>
+            <enumeration value="capsules"/>
+            <enumeration value="solute"/>
+            <enumeration value="injection"/>
+            <enumeration value="suspension"/>
+            <enumeration value="powder"/>
+        </restriction>
+    </simpleType>
+
+    <!-- TYPE OF ELEMENT `sertificate` -->
+    <complexType name="certificate-type">
+        <sequence>
+            <element ref="tns:certificate-number"/>
+            <element ref="tns:certificate-issued-date-time"/>
+            <element ref="tns:certificate-expires-date-time"/>
+            <element ref="tns:certificate-registered-organization"/>
+        </sequence>
+    </complexType>
+
+    <!-- TYPE OF ELEMENT `package` -->
+    <complexType name="package-type">
+        <sequence>
+            <element ref="tns:package-type"/>
+            <element ref="tns:package-elements-count-in"/>
+            <element ref="tns:package-price"/>
+        </sequence>
+    </complexType>
+    <!-- packages types -->
+    <simpleType name="package-type-enum-type">
+        <restriction base="string">
+            <enumeration value="cell packaging"/>
+            <enumeration value="bottle"/>
+            <enumeration value="jar"/>
+            <enumeration value="ampoules"/>
+            <enumeration value="syringe"/>
+            <enumeration value="aluminum tubes"/>
+        </restriction>
+    </simpleType>
+    <!-- number of elements in package -->
+    <simpleType name="package-elements-count-in-type">
+        <restriction base="int">
+        </restriction>
+    </simpleType>
+    <!-- price for package -->
+    <simpleType name="package-price-type">
+        <restriction base="int">
+        </restriction>
+    </simpleType>
+
+    <!-- TYPE OF ELEMENT `dosage` -->
+    <complexType name="dosage-type">
+        <sequence>
+            <element ref="tns:dosage-active-agent"/>
+            <element ref="tns:dosage-maximum-use-per-day"/>
+        </sequence>
+    </complexType>
+
+</schema>

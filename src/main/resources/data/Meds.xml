@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:medicines xmlns:tns="Medicines" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="Medicines MedsShemaXMLS.xsd ">
+	<!-- MEDICINE 1 -->
+	<tns:medicine tns:id="i1">  
+		<tns:name>IBUPROFEN</tns:name>
+		<tns:pharm>MINSK-PHARM</tns:pharm>
+		<tns:group>Non-narcotic analgesics</tns:group>
+		<tns:analogs>
+			<tns:analog>IBUPROFEN-MAX</tns:analog>
+		</tns:analogs>
+		<tns:versions> 
+			<tns:version tns:distribution-version="pills">
+ 				<tns:certificate>
+ 					<tns:certificate-number>1010101012938</tns:certificate-number>
+ 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
+ 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
+ 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
+ 				</tns:certificate>
+ 				<tns:package>
+ 					<tns:package-type>cell packaging</tns:package-type>
+ 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
+ 					<tns:package-price>1</tns:package-price>
+ 				</tns:package>
+ 				<tns:dosage>
+ 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
+ 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+ 				</tns:dosage>
+			</tns:version>
+		</tns:versions>
+	</tns:medicine>
+	
+	<!-- MEDICINE 2 -->
+	<tns:medicine tns:id="i2">   
+		<tns:name>IBUPROFEN</tns:name>
+		<tns:pharm>MINSK-PHARM</tns:pharm>
+		<tns:group>Non-narcotic analgesics</tns:group>
+		<tns:analogs>
+			<tns:analog>IBUPROFEN-MAX</tns:analog>
+		</tns:analogs>
+		<tns:versions> 
+			<tns:version tns:distribution-version="pills">
+ 				<tns:certificate>
+ 					<tns:certificate-number>1010101012938</tns:certificate-number>
+ 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
+ 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
+ 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
+ 				</tns:certificate>
+ 				<tns:package>
+ 					<tns:package-type>cell packaging</tns:package-type>
+ 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
+ 					<tns:package-price>1</tns:package-price>
+ 				</tns:package>
+ 				<tns:dosage>
+ 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
+ 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+ 				</tns:dosage>
+			</tns:version>
+		</tns:versions>
+	</tns:medicine>
+</tns:medicines>
