@@ -14,7 +14,7 @@
 			<PatternLayout pattern="${pattern_console}" />
 		</Console>
 
-		<RollingFile name="LogFile" fileName="logs/array.log" append="true" filePattern="logs/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}_%i.log">
+		<RollingFile name="LogFile" fileName="logs/logs.log" append="true" filePattern="logs/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}_%i.log">
 			<PatternLayout pattern="${pattern_file}" />
 			<Policies>
 				<TimeBasedTriggeringPolicy interval="1" />
@@ -25,13 +25,9 @@
 	</Appenders>
 
 	<Loggers>
-		<Logger name="by.alekseyshysh.array.service.ArrayReadService" level="INFO">
-			<AppenderRef ref="Console" />
-		</Logger>
 		<Root level="info">
 			<AppenderRef ref="Console" level="info" />
 			<AppenderRef ref="LogFile" level="info" />
 		</Root>
 	</Loggers>
-
 </Configuration>
