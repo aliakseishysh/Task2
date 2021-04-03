@@ -22,10 +22,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -51,10 +59,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 			<tns:version tns:distribution-version="capsules">
  				<tns:certificate>
@@ -68,10 +84,18 @@
  					<tns:package-elements-count-in>30</tns:package-elements-count-in>
  					<tns:package-price>10</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -96,10 +120,18 @@
  					<tns:package-elements-count-in>20</tns:package-elements-count-in>
  					<tns:package-price>2</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>60</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>4</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -125,10 +157,18 @@
  					<tns:package-elements-count-in>1</tns:package-elements-count-in>
  					<tns:package-price>100</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>500</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>1</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -155,10 +195,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>500</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>100</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 			<tns:version tns:distribution-version="powder">
  				<tns:certificate>
@@ -172,10 +220,18 @@
  					<tns:package-elements-count-in>100</tns:package-elements-count-in>
  					<tns:package-price>100</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>500</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>100</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -201,10 +257,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -230,10 +294,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>2</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>100</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>1</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -260,10 +332,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -291,10 +371,13 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -320,10 +403,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -349,14 +440,18 @@
  					<tns:package-elements-count-in>1</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>1000</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>1</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>500</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>1</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -382,10 +477,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 						<tns:version tns:distribution-version="ointment">
  				<tns:certificate>
@@ -399,10 +502,18 @@
  					<tns:package-elements-count-in>1</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>1</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -428,10 +539,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>999</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>2</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -457,10 +576,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -486,10 +613,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>10000</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>999</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>1</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>
@@ -518,10 +653,18 @@
  					<tns:package-elements-count-in>10</tns:package-elements-count-in>
  					<tns:package-price>1</tns:package-price>
  				</tns:package>
- 				<tns:dosage>
- 					<tns:dosage-active-agent>50</tns:dosage-active-agent>
- 					<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
- 				</tns:dosage>
+ 				<tns:dosages>
+					<tns:dosage>
+						<tns:dosage-description>Childrens</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+					<tns:dosage>
+						<tns:dosage-description>Adults</tns:dosage-description>
+						<tns:dosage-active-agent>50</tns:dosage-active-agent>
+						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
+					</tns:dosage>
+				</tns:dosages>
 			</tns:version>
 		</tns:versions>
 	</tns:medicine>

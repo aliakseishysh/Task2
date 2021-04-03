@@ -50,7 +50,9 @@
     <element name="package-elements-count-in" type="tns:package-elements-count-in-type"/>
     <element name="package-price" type="tns:package-price-type"/> <!-- price of package in euro -->
     <!-- DOSAGE: medicine.versions.version.dosage -->
+    <element name="dosages" type="tns:dosages-type"/>
     <element name="dosage" type="tns:dosage-type"/>
+    <element name="dosage-description" type="tns:dosage-description-type"/>
     <element name="dosage-active-agent" type="int"/> <!-- amount of active agent in milligrams -->
     <element name="dosage-maximum-use-per-day" type="int"/> <!-- amount of elements in package to use per day -->
     
@@ -191,12 +193,27 @@
         </restriction>
     </simpleType>
 
-    <!-- TYPE OF ELEMENT `dosage` -->
+        
+    <!-- TYPE OF `dosages` ELEMENT (includes `dosage`) -->
+    <complexType name="dosages-type">
+        <sequence>
+            <element ref="tns:dosage" minOccurs="1" maxOccurs="10"/>
+        </sequence>
+    </complexType>
+    <!-- type of element `dosage` -->
     <complexType name="dosage-type">
         <sequence>
+            <element ref="tns:dosage-description"/>
             <element ref="tns:dosage-active-agent"/>
             <element ref="tns:dosage-maximum-use-per-day"/>
         </sequence>
     </complexType>
+    <!-- type of element dosage-description -->
+    <simpleType name="dosage-description-type">
+        <restriction base = "string">
+            <maxLength value="1000"/>
+        </restriction>
+    </simpleType>
+
 
 </schema>
