@@ -1,6 +1,7 @@
 package by.alekseyshysh.task2.entity;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Version {
 
@@ -19,6 +20,6 @@ public class Version {
 	@Override
 	public String toString() {
 		return "Version [distributionVersion=" + distributionVersion + ", certificate=" + certificate
-				+ ", versionPackage=" + packageEntity.toString() + ", dosages=" + dosages.stream().map(Dosage::toString) + "]";
+				+ ", versionPackage=" + packageEntity.toString() + ", dosages=" + dosages.stream().map(Dosage::toString).collect(Collectors.toList()) + "]";
 	}
 }

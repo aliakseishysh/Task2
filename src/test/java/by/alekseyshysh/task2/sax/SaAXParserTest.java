@@ -6,12 +6,16 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
+
+import by.alekseyshysh.task2.entity.Medicine;
 
 
 public class SaAXParserTest {
@@ -22,7 +26,10 @@ public class SaAXParserTest {
 		URI uri = getClass().getResource("/data/Meds.xml").toURI();
 		String absolutePath = new File(uri).getAbsolutePath();
 		Path path = Paths.get(absolutePath);
-		parser.parse(path.toString(), new XMLHandler());
+		XMLHandler handler = new XMLHandler();
+		parser.parse(path.toString(), handler);
+		List<Medicine> medicines = handler.getMedicines();
+		System.out.println(medicines.stream().map(medicine -> "\n" + medicine.toString()).collect(Collectors.toList()));
 	}
 	
 }

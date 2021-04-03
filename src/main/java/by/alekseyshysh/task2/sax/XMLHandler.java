@@ -1,6 +1,7 @@
 package by.alekseyshysh.task2.sax;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class XMLHandler extends DefaultHandler {
 	private static final String DOSAGE_ACTIVE_AGENT = "dosage-active-agent";
 	private static final String DOSAGE_MAXIMUM_USE_PER_DAY = "dosage-maximum-use-per-day";
 	
-	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("YYYY-MM-DDThh:mm:ss");
+	//private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("YYYY-MM-DDThh:mm:ss");
 	
 	private List<Medicine> medicines;
 	private MedicineBuilder medicineBuilder;
@@ -84,44 +85,34 @@ public class XMLHandler extends DefaultHandler {
 
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
-        if (elementValue == null) {
-            elementValue = new StringBuilder();
-        } else {
-            elementValue.append(ch, start, length);
-        }
+		elementValue = new StringBuilder();
+        elementValue.append(ch, start, length);
+        String result = elementValue.toString();
+        logger.log(Level.INFO, result);
+        
 	}
 	
 	@Override
     public void startDocument() throws SAXException {
+		elementValue = new StringBuilder();
 	}
 	
 	@Override
     public void startElement(String uri, String lName, String qName, Attributes attr) throws SAXException {
-		
-		switch (qName) {
+		switch (lName) {
 			case MEDICINES:
 				medicines = new ArrayList<>();
+				elementValue = new StringBuilder();
 				break;
 			case MEDICINE:
 				medicineBuilder = new MedicineBuilderImpl();
 				medicineBuilder.setId(attr.getValue(0));
-				break;
-			case NAME:
-				medicineBuilder.setName(qName);
-				break;
-			case PHARM:
-				medicineBuilder.setPharm(qName);
-				break;
-			case GROUP:
-				medicineBuilder.setGroup(qName);
 				break;
 			case ANALOGS:
 				analogs = new ArrayList<>();
 				break;
 			case ANALOG:
 				analogBuilder = new AnalogBuilderImpl();
-				analogBuilder.setAnalog(qName);
-				analogs.add(analogBuilder.createInstance());
 				break;
 			case VERSIONS:
 				versions = new ArrayList<>();
@@ -133,39 +124,8 @@ public class XMLHandler extends DefaultHandler {
 			case CERTIFICATE:
 				certificateBuilder = new CertificateBuilderImpl();
 				break;
-			case CERTIFICATE_NUMBER:
-				certificateBuilder.setCertificateNumber(Integer.parseInt(qName));
-				break;
-			case CERTIFICATE_ISSUED_DATE_TIME: 
-				{
-					LocalDate localDate = LocalDate.parse(qName, FORMATTER);
-					LocalTime localTime = LocalTime.parse(qName, FORMATTER);
-					certificateBuilder.setCertificateIssuedDate(localDate);
-					certificateBuilder.setCertificateIssuedTime(localTime);
-				}
-				break;
-			case CERTIFICATE_EXPIRES_DATE_TIME:
-				{
-					LocalDate localDate = LocalDate.parse(qName, FORMATTER);
-					LocalTime localTime = LocalTime.parse(qName, FORMATTER);
-					certificateBuilder.setCertificateIssuedDate(localDate);
-					certificateBuilder.setCertificateIssuedTime(localTime);
-				}
-				break;
-			case CERTIFICATE_REGISTERED_ORGANIZAION:
-				certificateBuilder.setCertificateRegisteredOrganization(qName);
-				break;
 			case PACKAGE:
 				packageBuilder = new PackageBuilderImpl();
-				break;
-			case PACKAGE_TYPE:
-				packageBuilder.setPackageType(qName);
-				break;
-			case PACKAGE_ELEMENTS_COUNT_IN:
-				packageBuilder.setElementsCountIn(Integer.parseInt(qName));
-				break;
-			case PACKAGE_PRICE:
-				packageBuilder.setPrice(Integer.parseInt(qName));
 				break;
 			case DOSAGES:
 				dosages = new ArrayList<>();
@@ -173,31 +133,34 @@ public class XMLHandler extends DefaultHandler {
 			case DOSAGE:
 				dosageBuilder = new DosageBuilderImpl();
 				break;
-			case DOSAGE_ACTIVE_AGENT:
-				dosageBuilder.setDosageActiveAgent(Integer.parseInt(qName));
-				break;
-			case DOSAGE_MAXIMUM_USE_PER_DAY:
-				dosageBuilder.setDosageMaximumUsePerDay(Integer.parseInt(qName));
-				break;
 			default:
-				logger.log(Level.INFO, qName);
+				logger.log(Level.INFO, lName, elementValue.toString());
 				break;
 		}
 	}
 	
 	@Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-		switch (qName) {
+		switch (localName) {
 		case MEDICINES:
-			
 			break;
 		case MEDICINE:
 			medicines.add(medicineBuilder.createInstance());
+			break;
+		case NAME:
+			medicineBuilder.setName(elementValue.toString());
+			break;
+		case PHARM:
+			medicineBuilder.setPharm(elementValue.toString());
+			break;
+		case GROUP:
+			medicineBuilder.setGroup(elementValue.toString());
 			break;
 		case ANALOGS:
 			medicineBuilder.setAnalogs(analogs);
 			break;
 		case ANALOG:
+			analogBuilder.setAnalog(elementValue.toString());
 			analogs.add(analogBuilder.createInstance());
 			break;
 		case VERSIONS:
@@ -209,6 +172,44 @@ public class XMLHandler extends DefaultHandler {
 		case CERTIFICATE:
 			versionBuilder.setCertificate(certificateBuilder.createInstance());
 			break;
+		case CERTIFICATE_NUMBER:
+			certificateBuilder.setCertificateNumber(Long.parseLong(elementValue.toString()));
+			break;
+		case CERTIFICATE_ISSUED_DATE_TIME: 
+			{
+				String dateTime = elementValue.toString();
+				LocalDateTime localDateTime = LocalDateTime.parse(dateTime);
+				LocalDate localDate = localDateTime.toLocalDate();
+				LocalTime localTime = localDateTime.toLocalTime();
+				certificateBuilder.setCertificateIssuedDate(localDate);
+				certificateBuilder.setCertificateIssuedTime(localTime);
+			}
+			break;
+		case CERTIFICATE_EXPIRES_DATE_TIME:
+			{
+				String dateTime = elementValue.toString();
+				LocalDateTime localDateTime = LocalDateTime.parse(dateTime);
+				LocalDate localDate = localDateTime.toLocalDate();
+				LocalTime localTime = localDateTime.toLocalTime();
+				certificateBuilder.setCertificateExpiresDate(localDate);
+				certificateBuilder.setCertificateExpiresTime(localTime);
+			}
+			break;
+		case CERTIFICATE_REGISTERED_ORGANIZAION:
+			certificateBuilder.setCertificateRegisteredOrganization(elementValue.toString());
+			break;
+		case PACKAGE:
+			versionBuilder.setPackageEntity(packageBuilder.createInstance());
+			break;
+		case PACKAGE_TYPE:
+			packageBuilder.setPackageType(elementValue.toString());
+			break;
+		case PACKAGE_ELEMENTS_COUNT_IN:
+			packageBuilder.setElementsCountIn(Integer.parseInt(elementValue.toString()));
+			break;
+		case PACKAGE_PRICE:
+			packageBuilder.setPrice(Integer.parseInt(elementValue.toString()));
+			break;
 		case DOSAGES:
 			versionBuilder.setDosages(dosages);
 			break;
@@ -216,14 +217,18 @@ public class XMLHandler extends DefaultHandler {
 			dosages.add(dosageBuilder.createInstance());
 			break;
 		case DOSAGE_ACTIVE_AGENT:
-			dosageBuilder.setDosageActiveAgent(Integer.parseInt(qName));
+			dosageBuilder.setDosageActiveAgent(Integer.parseInt(elementValue.toString()));
 			break;
 		case DOSAGE_MAXIMUM_USE_PER_DAY:
-			dosageBuilder.setDosageMaximumUsePerDay(Integer.parseInt(qName));
+			dosageBuilder.setDosageMaximumUsePerDay(Integer.parseInt(elementValue.toString()));
 			break;
 		default:
-			logger.log(Level.INFO, qName);
+			logger.log(Level.INFO, localName, elementValue.toString());
 			break;
-    }
-
+		}
+	}
+	
+	public List<Medicine> getMedicines() {
+		return new ArrayList<>(medicines);
+	}
 }

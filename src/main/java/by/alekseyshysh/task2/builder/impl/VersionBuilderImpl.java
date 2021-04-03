@@ -5,13 +5,14 @@ import java.util.List;
 import by.alekseyshysh.task2.builder.VersionBuilder;
 import by.alekseyshysh.task2.entity.Certificate;
 import by.alekseyshysh.task2.entity.Dosage;
+import by.alekseyshysh.task2.entity.PackageEntity;
 import by.alekseyshysh.task2.entity.Version;
 
 public class VersionBuilderImpl implements VersionBuilder {
 
 	private String distributionVersion;
 	private Certificate certificate;
-	private String versionPackage;
+	private PackageEntity packageEntity;
 	private List<Dosage> dosages;
 
 	@Override
@@ -25,8 +26,8 @@ public class VersionBuilderImpl implements VersionBuilder {
 	}
 
 	@Override
-	public void setVersionPackage(String versionPackage) {
-		this.versionPackage = versionPackage;
+	public void setPackageEntity(PackageEntity packageEntity) {
+		this.packageEntity = packageEntity;
 	}
 
 	@Override
@@ -37,7 +38,7 @@ public class VersionBuilderImpl implements VersionBuilder {
 
 	@Override
 	public Version createInstance() {
-		return new Version(distributionVersion, certificate, versionPackage, dosages);
+		return new Version(distributionVersion, certificate, packageEntity, dosages);
 	}
 
 }

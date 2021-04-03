@@ -1,6 +1,7 @@
 package by.alekseyshysh.task2.entity;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Medicine {
 	
@@ -23,7 +24,7 @@ public class Medicine {
 	@Override
 	public String toString() {
 		return "Medicine [id=" + id + ", name=" + name + ", pharm=" + pharm + ", group=" + group + ", analogs="
-				+ analogs.stream().map(Analog::toString) + ", versions=" + versions.stream().map(Version::toString) + "]";
+				+ analogs.stream().map(Analog::toString).collect(Collectors.toList()) + ", versions=" + versions.stream().map(Version::toString).collect(Collectors.toList()) + "]";
 	}
 	
 

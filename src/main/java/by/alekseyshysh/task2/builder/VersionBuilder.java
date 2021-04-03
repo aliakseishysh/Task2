@@ -13,7 +13,7 @@ public interface VersionBuilder {
 
 	void setCertificate(Certificate certificate);
 
-	void setVersionPackage(PackageEntity packageEntity);
+	void setPackageEntity(PackageEntity packageEntity);
 
 	void setDosages(List<Dosage> dosages);
 
