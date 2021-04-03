@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tns:medicines xmlns:tns="Medicines" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="Medicines MedsShemaXMLS.xsd ">
+<tns:medicines xmlns:tns="http://www.github.com/setevoybog/Task2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.github.com/setevoybog/Task2 MedsShemaXMLS2.xsd ">
 	<!-- MEDICINE 1 -->
 	<tns:medicine tns:id="i1">   
 		<tns:name>IBUPROFEN</tns:name>
