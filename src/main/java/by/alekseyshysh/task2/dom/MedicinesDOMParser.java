@@ -3,9 +3,7 @@ package by.alekseyshysh.task2.dom;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +18,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import by.alekseyshysh.task2.builder.AnalogBuilder;
 import by.alekseyshysh.task2.builder.CertificateBuilder;
 import by.alekseyshysh.task2.builder.DosageBuilder;
 import by.alekseyshysh.task2.builder.MedicineBuilder;
 import by.alekseyshysh.task2.builder.PackageBuilder;
 import by.alekseyshysh.task2.builder.VersionBuilder;
-import by.alekseyshysh.task2.builder.impl.AnalogBuilderImpl;
 import by.alekseyshysh.task2.builder.impl.CertificateBuilderImpl;
 import by.alekseyshysh.task2.builder.impl.DosageBuilderImpl;
 import by.alekseyshysh.task2.builder.impl.MedicineBuilderImpl;
@@ -38,6 +34,7 @@ import by.alekseyshysh.task2.entity.Dosage;
 import by.alekseyshysh.task2.entity.Medicine;
 import by.alekseyshysh.task2.entity.PackageEntity;
 import by.alekseyshysh.task2.entity.Version;
+import by.alekseyshysh.task2.exception.MedicinesException;
 import by.alekseyshysh.task2.util.MedsConstants;
 
 public class MedicinesDOMParser {
@@ -46,20 +43,31 @@ public class MedicinesDOMParser {
 
 	private List<Medicine> medicines = new ArrayList<>();
 
-	public void setSettings() throws ParserConfigurationException {
+	public void setSettings() throws MedicinesException {
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-		documentBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-		documentBuilder = documentBuilderFactory.newDocumentBuilder();
+		try {
+			documentBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+			documentBuilder = documentBuilderFactory.newDocumentBuilder();
+		} catch (ParserConfigurationException e) {
+			throw new MedicinesException("DocumentBuilderFactory or the DocumentBuildersit creates cannot support this feature");
+		}
+		
 	}
 
-	public void parseDocument(URI path) throws SAXException, IOException {
-		Document document = documentBuilder.parse(new File(path));
-		document.getDocumentElement().normalize();
-		NodeList medicinesXML = getElementsByTagName(document, MedsConstants.MEDICINE);
-		for (int i = 0; i < medicinesXML.getLength(); i++) {
-			Node medicineNode = medicinesXML.item(i);
-			parseMedicineFields(medicineNode);
+	public void parseDocument(URI path) throws MedicinesException {
+		Document document;
+		try {
+			document = documentBuilder.parse(new File(path));
+			document.getDocumentElement().normalize();
+			NodeList medicinesXML = getElementsByTagName(document, MedsConstants.MEDICINE);
+			for (int i = 0; i < medicinesXML.getLength(); i++) {
+				Node medicineNode = medicinesXML.item(i);
+				parseMedicineFields(medicineNode);
+			}
+		} catch (SAXException | IOException e) {
+			throw new MedicinesException("Problem with input file");
 		}
+		
 	}
 
 	public List<Medicine> getMedicines() {

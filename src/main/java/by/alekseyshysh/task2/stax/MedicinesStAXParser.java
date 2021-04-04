@@ -36,169 +36,152 @@ import by.alekseyshysh.task2.entity.Analog;
 import by.alekseyshysh.task2.entity.Dosage;
 import by.alekseyshysh.task2.entity.Medicine;
 import by.alekseyshysh.task2.entity.Version;
+import by.alekseyshysh.task2.exception.MedicinesException;
+import by.alekseyshysh.task2.util.MedsConstants;
 
 public class MedicinesStAXParser {
 
-	private static Logger logger = LogManager.getRootLogger();
-	
-	private static final String MEDICINES = "medicines";
-	private static final String MEDICINE = "medicine";
-	private static final String ATTRIBUTE_ID = "id";
-	private static final String NAME = "name";
-	private static final String PHARM = "pharm";
-	private static final String GROUP = "group";
-	private static final String ANALOGS = "analogs";
-	private static final String ANALOG = "analog";
-	private static final String VERSIONS = "versions";
-	private static final String VERSION = "version";
-	private static final String ATTRIBUTE_DISTRIBUTION_VERSION = "distribution-version";
-	private static final String CERTIFICATE = "certificate";
-	private static final String CERTIFICATE_NUMBER = "certificate-number";
-	private static final String CERTIFICATE_ISSUED_DATE_TIME = "certificate-issued-date-time";
-	private static final String CERTIFICATE_EXPIRES_DATE_TIME = "certificate-expires-date-time";
-	private static final String CERTIFICATE_REGISTERED_ORGANIZAION = "certificate-registered-organization";
-	private static final String PACKAGE = "package";
-	private static final String PACKAGE_TYPE = "package-type";
-	private static final String PACKAGE_ELEMENTS_COUNT_IN = "package-elements-count-in";
-	private static final String PACKAGE_PRICE = "package-price";
-	private static final String DOSAGES = "dosages";
-	private static final String DOSAGE = "dosage";
-	private static final String DOSAGE_DESCRIPTION = "dosage-description";
-	private static final String DOSAGE_ACTIVE_AGENT = "dosage-active-agent";
-	private static final String DOSAGE_MAXIMUM_USE_PER_DAY = "dosage-maximum-use-per-day";
-	
-	private XMLInputFactory xmlInputFactory;
 	private XMLEventReader reader;
-	
+
 	private List<Medicine> medicines;
 	private MedicineBuilder medicineBuilder;
-	
+
 	private List<Analog> analogs;
 	private AnalogBuilder analogBuilder;
-	
+
 	private List<Version> versions;
 	private VersionBuilder versionBuilder;
-	
+
 	private CertificateBuilder certificateBuilder;
-	
+
 	private PackageBuilder packageBuilder;
-	
+
 	private List<Dosage> dosages;
 	private DosageBuilder dosageBuilder;
-			
-	public void setSettings(String path) throws FileNotFoundException, XMLStreamException {
-		xmlInputFactory = XMLInputFactory.newInstance();
-		reader = xmlInputFactory.createXMLEventReader(new FileInputStream(path));
+
+	public void setSettings(String path) throws MedicinesException {
+		XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+		try {
+			reader = xmlInputFactory.createXMLEventReader(new FileInputStream(path));
+		} catch (FileNotFoundException | XMLStreamException e) {
+			throw new MedicinesException(MedicinesStAXParser.class + ": file not found or xml stream exception");
+		}
+	}
+
+	public List<Medicine> getMedicines() {
+		return new ArrayList<>(medicines);
 	}
 	
-	public void parse() throws XMLStreamException {
-		while(reader.hasNext()) {
+	public void parse() throws MedicinesException {
+		try {
+			parseInternal();
+		} catch (XMLStreamException e) {
+			throw new MedicinesException(MedicinesStAXParser.class + ": Error while parsing");
+		}
+	}
+
+	private void parseInternal() throws XMLStreamException {
+		while (reader.hasNext()) {
 			XMLEvent nextEvent = reader.nextEvent();
 			if (nextEvent.isStartElement()) {
 				StartElement startElement = nextEvent.asStartElement();
 				switch (startElement.getName().getLocalPart()) {
-				case MEDICINES:
+				case MedsConstants.MEDICINES:
 					medicines = new ArrayList<>();
 					break;
-				case MEDICINE:
+				case MedsConstants.MEDICINE:
 					medicineBuilder = new MedicineBuilderImpl();
-					QName qName = new QName(startElement.getNamespaceURI("tns"), ATTRIBUTE_ID, "tns");
+					QName qName = new QName(startElement.getNamespaceURI(MedsConstants.NAMESPACE_PREFIX),
+							MedsConstants.ATTRIBUTE_ID, MedsConstants.NAMESPACE_PREFIX);
 					String id = startElement.getAttributeByName(qName).getValue();
 					medicineBuilder.setId(id);
 					break;
-				case NAME:
+				case MedsConstants.NAME:
 					nextEvent = reader.nextEvent();
 					medicineBuilder.setName(nextEvent.asCharacters().getData());
 					break;
-				case PHARM:
+				case MedsConstants.PHARM:
 					nextEvent = reader.nextEvent();
 					medicineBuilder.setPharm(nextEvent.asCharacters().getData());
 					break;
-				case GROUP:
+				case MedsConstants.GROUP:
 					nextEvent = reader.nextEvent();
 					medicineBuilder.setGroup(nextEvent.asCharacters().getData());
 					break;
-				case ANALOGS:
+				case MedsConstants.ANALOGS:
 					analogs = new ArrayList<>();
 					break;
-				case ANALOG:
+				case MedsConstants.ANALOG:
 					analogBuilder = new AnalogBuilderImpl();
 					nextEvent = reader.nextEvent();
 					analogBuilder.setAnalog(nextEvent.asCharacters().getData());
 					analogs.add(analogBuilder.createInstance());
 					break;
-				case VERSIONS:
+				case MedsConstants.VERSIONS:
 					versions = new ArrayList<>();
 					break;
-				case VERSION:
+				case MedsConstants.VERSION:
 					versionBuilder = new VersionBuilderImpl();
-					QName qDistributionVersion = new QName(startElement.getNamespaceURI("tns"), ATTRIBUTE_DISTRIBUTION_VERSION, "tns");
+					QName qDistributionVersion = new QName(startElement.getNamespaceURI(MedsConstants.NAMESPACE_PREFIX),
+							MedsConstants.ATTRIBUTE_DISTRIBUTION_VERSION, MedsConstants.NAMESPACE_PREFIX);
 					String distributionVersion = startElement.getAttributeByName(qDistributionVersion).getValue();
 					versionBuilder.setDistributionVersion(distributionVersion);
 					break;
-				case CERTIFICATE:
+				case MedsConstants.CERTIFICATE:
 					certificateBuilder = new CertificateBuilderImpl();
 					break;
-				case CERTIFICATE_NUMBER:
+				case MedsConstants.CERTIFICATE_NUMBER:
 					nextEvent = reader.nextEvent();
 					certificateBuilder.setCertificateNumber(Long.parseLong(nextEvent.asCharacters().getData()));
 					break;
-				case CERTIFICATE_ISSUED_DATE_TIME: 
-					{
-						nextEvent = reader.nextEvent();
-						String dateTime = nextEvent.asCharacters().getData();
-						LocalDateTime localDateTime = LocalDateTime.parse(dateTime);
-						LocalDate localDate = localDateTime.toLocalDate();
-						LocalTime localTime = localDateTime.toLocalTime();
-						certificateBuilder.setCertificateIssuedDate(localDate);
-						certificateBuilder.setCertificateIssuedTime(localTime);
-					}
+				case MedsConstants.CERTIFICATE_ISSUED_DATE_TIME:
+					nextEvent = reader.nextEvent();
+					String dateTimeIssued = nextEvent.asCharacters().getData();
+					LocalDateTime issuedDateTime = LocalDateTime.parse(dateTimeIssued);
+					certificateBuilder.setCertificateIssuedDate(issuedDateTime.toLocalDate());
+					certificateBuilder.setCertificateIssuedTime(issuedDateTime.toLocalTime());
 					break;
-				case CERTIFICATE_EXPIRES_DATE_TIME:
-					{
-						nextEvent = reader.nextEvent();
-						String dateTime = nextEvent.asCharacters().getData();
-						LocalDateTime localDateTime = LocalDateTime.parse(dateTime);
-						LocalDate localDate = localDateTime.toLocalDate();
-						LocalTime localTime = localDateTime.toLocalTime();
-						certificateBuilder.setCertificateExpiresDate(localDate);
-						certificateBuilder.setCertificateExpiresTime(localTime);
-					}
+				case MedsConstants.CERTIFICATE_EXPIRES_DATE_TIME:
+					nextEvent = reader.nextEvent();
+					String dateTimeExpires = nextEvent.asCharacters().getData();
+					LocalDateTime expiresDateTime = LocalDateTime.parse(dateTimeExpires);
+					certificateBuilder.setCertificateExpiresDate(expiresDateTime.toLocalDate());
+					certificateBuilder.setCertificateExpiresTime(expiresDateTime.toLocalTime());
 					break;
-				case CERTIFICATE_REGISTERED_ORGANIZAION:
+				case MedsConstants.CERTIFICATE_REGISTERED_ORGANIZAION:
 					nextEvent = reader.nextEvent();
 					certificateBuilder.setCertificateRegisteredOrganization(nextEvent.asCharacters().getData());
 					break;
-				case PACKAGE:
+				case MedsConstants.PACKAGE:
 					packageBuilder = new PackageBuilderImpl();
 					break;
-				case PACKAGE_TYPE:
+				case MedsConstants.PACKAGE_TYPE:
 					nextEvent = reader.nextEvent();
 					packageBuilder.setPackageType(nextEvent.asCharacters().getData());
 					break;
-				case PACKAGE_ELEMENTS_COUNT_IN:
+				case MedsConstants.PACKAGE_ELEMENTS_COUNT_IN:
 					nextEvent = reader.nextEvent();
 					packageBuilder.setElementsCountIn(Integer.parseInt(nextEvent.asCharacters().getData()));
 					break;
-				case PACKAGE_PRICE:
+				case MedsConstants.PACKAGE_PRICE:
 					nextEvent = reader.nextEvent();
 					packageBuilder.setPrice(Integer.parseInt(nextEvent.asCharacters().getData()));
 					break;
-				case DOSAGES:
+				case MedsConstants.DOSAGES:
 					dosages = new ArrayList<>();
 					break;
-				case DOSAGE:
+				case MedsConstants.DOSAGE:
 					dosageBuilder = new DosageBuilderImpl();
 					break;
-				case DOSAGE_DESCRIPTION:
+				case MedsConstants.DOSAGE_DESCRIPTION:
 					nextEvent = reader.nextEvent();
 					dosageBuilder.setDosageDescription(nextEvent.asCharacters().getData());
 					break;
-				case DOSAGE_ACTIVE_AGENT:
+				case MedsConstants.DOSAGE_ACTIVE_AGENT:
 					nextEvent = reader.nextEvent();
 					dosageBuilder.setDosageActiveAgent(Integer.parseInt(nextEvent.asCharacters().getData()));
 					break;
-				case DOSAGE_MAXIMUM_USE_PER_DAY:
+				case MedsConstants.DOSAGE_MAXIMUM_USE_PER_DAY:
 					nextEvent = reader.nextEvent();
 					dosageBuilder.setDosageMaximumUsePerDay(Integer.parseInt(nextEvent.asCharacters().getData()));
 					break;
@@ -207,32 +190,31 @@ public class MedicinesStAXParser {
 					break;
 				}
 			}
-			
 			if (nextEvent.isEndElement()) {
 				EndElement endElement = nextEvent.asEndElement();
 				switch (endElement.getName().getLocalPart()) {
-				case MEDICINE:
+				case MedsConstants.MEDICINE:
 					medicines.add(medicineBuilder.createInstance());
 					break;
-				case ANALOGS:
+				case MedsConstants.ANALOGS:
 					medicineBuilder.setAnalogs(analogs);
 					break;
-				case VERSIONS:
+				case MedsConstants.VERSIONS:
 					medicineBuilder.setVersions(versions);
 					break;
-				case VERSION:
+				case MedsConstants.VERSION:
 					versions.add(versionBuilder.createInstance());
 					break;
-				case CERTIFICATE:
+				case MedsConstants.CERTIFICATE:
 					versionBuilder.setCertificate(certificateBuilder.createInstance());
 					break;
-				case PACKAGE:
+				case MedsConstants.PACKAGE:
 					versionBuilder.setPackageEntity(packageBuilder.createInstance());
 					break;
-				case DOSAGES:
+				case MedsConstants.DOSAGES:
 					versionBuilder.setDosages(dosages);
 					break;
-				case DOSAGE:
+				case MedsConstants.DOSAGE:
 					dosages.add(dosageBuilder.createInstance());
 					break;
 				default:
@@ -242,8 +224,5 @@ public class MedicinesStAXParser {
 			}
 		}
 	}
-	
-	public List<Medicine> getMedicines() {
-		return new ArrayList<>(medicines);
-	}
+
 }

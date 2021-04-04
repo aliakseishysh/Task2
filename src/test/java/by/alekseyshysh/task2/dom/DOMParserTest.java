@@ -12,11 +12,12 @@ import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import by.alekseyshysh.task2.entity.Medicine;
+import by.alekseyshysh.task2.exception.MedicinesException;
 
 public class DOMParserTest {
 
 	@Test
-	public void parseTest() throws ParserConfigurationException, URISyntaxException, SAXException, IOException {
+	public void parseTest() throws MedicinesException, URISyntaxException {
 		MedicinesDOMParser parser = new MedicinesDOMParser();
 		parser.setSettings();
 		URI uri = getClass().getResource("/data/Meds.xml").toURI();

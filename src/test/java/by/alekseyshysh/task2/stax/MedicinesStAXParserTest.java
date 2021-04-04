@@ -17,12 +17,13 @@ import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import by.alekseyshysh.task2.entity.Medicine;
+import by.alekseyshysh.task2.exception.MedicinesException;
 
 
 public class MedicinesStAXParserTest {
 	
 	@Test
-	public void parseTest() throws ParserConfigurationException, SAXException, IOException, URISyntaxException, XMLStreamException {
+	public void parseTest() throws MedicinesException, URISyntaxException {
 		MedicinesStAXParser parser = new MedicinesStAXParser();
 		URI uri = getClass().getResource("/data/Meds.xml").toURI();
 		String absolutePath = new File(uri).getAbsolutePath();

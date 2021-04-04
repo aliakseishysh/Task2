@@ -7,17 +7,23 @@ import javax.xml.parsers.SAXParser;
 
 import org.xml.sax.SAXException;
 
+import by.alekseyshysh.task2.exception.MedicinesException;
+
 public class MedicinesSAXParser {
 
 	XMLHandler xmlHandler = new XMLHandler();
 
-	public SAXParser createSAXParser() throws ParserConfigurationException, SAXException {
+	public SAXParser createSAXParser() throws MedicinesException {
 		SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 		saxParserFactory.setNamespaceAware(true);
-		SAXParser saxParser = saxParserFactory.newSAXParser();
-		saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, ""); // Compliant
-		saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); // compliant
-		// XMLReader xmlReader = saxParser.getXMLReader();
+		SAXParser saxParser;
+		try {
+			saxParser = saxParserFactory.newSAXParser();
+			saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+			saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+		} catch (ParserConfigurationException | SAXException e) {
+			throw new MedicinesException("Problem with parser configuration");
+		}
 		return saxParser;
 	}
 }
