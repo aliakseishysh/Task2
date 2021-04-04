@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
 import by.alekseyshysh.task2.entity.Medicine;
 
 
-public class SaAXParserTest {
+public class SAXParserTest {
 	
 	@Test
 	public void parseTest() throws ParserConfigurationException, SAXException, IOException, URISyntaxException {

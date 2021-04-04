@@ -5,8 +5,14 @@ import by.alekseyshysh.task2.entity.Dosage;
 
 public class DosageBuilderImpl implements DosageBuilder {
 
+	private String dosageDescription;
 	private int dosageActiveAgent;
 	private int dosageMaximumUsePerDay;
+
+	@Override
+	public void setDosageDescription(String dosageDescription) {
+		this.dosageDescription = dosageDescription;
+	}
 
 	@Override
 	public void setDosageActiveAgent(int dosageActiveAgent) {
@@ -20,7 +26,8 @@ public class DosageBuilderImpl implements DosageBuilder {
 
 	@Override
 	public Dosage createInstance() {
-		return new Dosage(dosageActiveAgent, dosageMaximumUsePerDay);
+		return new Dosage(dosageDescription, dosageActiveAgent, dosageMaximumUsePerDay);
 	}
+
 
 }

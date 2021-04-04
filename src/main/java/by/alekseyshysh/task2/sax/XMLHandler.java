@@ -57,6 +57,7 @@ public class XMLHandler extends DefaultHandler {
 	private static final String PACKAGE_PRICE = "package-price";
 	private static final String DOSAGES = "dosages";
 	private static final String DOSAGE = "dosage";
+	private static final String DOSAGE_DESCRIPTION = "dosage-description";
 	private static final String DOSAGE_ACTIVE_AGENT = "dosage-active-agent";
 	private static final String DOSAGE_MAXIMUM_USE_PER_DAY = "dosage-maximum-use-per-day";
 	
@@ -215,6 +216,9 @@ public class XMLHandler extends DefaultHandler {
 			break;
 		case DOSAGE:
 			dosages.add(dosageBuilder.createInstance());
+			break;
+		case DOSAGE_DESCRIPTION:
+			dosageBuilder.setDosageDescription(elementValue.toString());
 			break;
 		case DOSAGE_ACTIVE_AGENT:
 			dosageBuilder.setDosageActiveAgent(Integer.parseInt(elementValue.toString()));
