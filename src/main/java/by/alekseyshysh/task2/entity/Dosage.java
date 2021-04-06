@@ -1,7 +1,7 @@
 package by.alekseyshysh.task2.entity;
 
 public class Dosage {
-	
+
 	private String dosageDescription;
 	private int dosageActiveAgent;
 	private int dosageMaximumUsePerDay;
@@ -12,10 +12,72 @@ public class Dosage {
 		this.dosageMaximumUsePerDay = dosageMaximumUsePerDay;
 	}
 
+	public Dosage() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getDosageDescription() {
+		return dosageDescription;
+	}
+
+	public void setDosageDescription(String dosageDescription) {
+		this.dosageDescription = dosageDescription;
+	}
+
+	public int getDosageActiveAgent() {
+		return dosageActiveAgent;
+	}
+
+	public void setDosageActiveAgent(int dosageActiveAgent) {
+		this.dosageActiveAgent = dosageActiveAgent;
+	}
+
+	public int getDosageMaximumUsePerDay() {
+		return dosageMaximumUsePerDay;
+	}
+
+	public void setDosageMaximumUsePerDay(int dosageMaximumUsePerDay) {
+		this.dosageMaximumUsePerDay = dosageMaximumUsePerDay;
+	}
+
+	@Override
+	public int hashCode() {
+		int prime = 31;
+		int result = 1;
+		result = prime * result + dosageActiveAgent;
+		result = prime * result + ((dosageDescription == null) ? 0 : dosageDescription.hashCode());
+		result = prime * result + dosageMaximumUsePerDay;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (this == object) {
+			return true;
+		}
+		if (object == null || getClass() != object.getClass()) {
+			return false;
+		}
+		Dosage other = (Dosage) object;
+		boolean result = false;
+		if (dosageDescription.equals(other.dosageDescription) && dosageActiveAgent == other.dosageActiveAgent
+				&& dosageMaximumUsePerDay == other.dosageMaximumUsePerDay) {
+			result = true;
+		}
+		return result;
+	}
+
 	@Override
 	public String toString() {
-		return "Dosage [dosageDescription=" + dosageDescription + ", dosageActiveAgent=" + dosageActiveAgent + ", dosageMaximumUsePerDay=" + dosageMaximumUsePerDay
-				+ "]";
+		StringBuilder stringBuilder = new StringBuilder("Dosage [dosageDescription=");
+		stringBuilder.append(dosageDescription);
+		stringBuilder.append(", dosageActiveAgent=");
+		stringBuilder.append(dosageActiveAgent);
+		stringBuilder.append(", dosageMaximumUsePerDay=");
+		stringBuilder.append(dosageMaximumUsePerDay);
+		stringBuilder.append("]");
+		String result = stringBuilder.toString();
+		return result;
 	}
 
 }

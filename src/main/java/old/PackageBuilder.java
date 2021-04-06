@@ -1,4 +1,4 @@
-package by.alekseyshysh.task2.builder;
+package old;
 
 import by.alekseyshysh.task2.entity.PackageEntity;
 

@@ -1,6 +1,5 @@
-package by.alekseyshysh.task2.builder.impl;
+package old;
 
-import by.alekseyshysh.task2.builder.DosageBuilder;
 import by.alekseyshysh.task2.entity.Dosage;
 
 public class DosageBuilderImpl implements DosageBuilder {

@@ -1,9 +1,7 @@
-package by.alekseyshysh.task2.builder.impl;
+package old;
 
 import java.util.List;
 
-import by.alekseyshysh.task2.builder.MedicineBuilder;
-import by.alekseyshysh.task2.entity.Analog;
 import by.alekseyshysh.task2.entity.Medicine;
 import by.alekseyshysh.task2.entity.Version;
 
@@ -13,7 +11,7 @@ public class MedicineBuilderImpl implements MedicineBuilder {
 	private String name;
 	private String pharm;
 	private String group;
-	private List<Analog> analogs;
+	private List<String> analogs;
 	private List<Version> versions;
 
 	@Override
@@ -37,7 +35,7 @@ public class MedicineBuilderImpl implements MedicineBuilder {
 	}
 
 	@Override
-	public void setAnalogs(List<Analog> analogs) {
+	public void setAnalogs(List<String> analogs) {
 		this.analogs = analogs;
 	}
 

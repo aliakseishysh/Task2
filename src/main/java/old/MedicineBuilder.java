@@ -1,8 +1,7 @@
-package by.alekseyshysh.task2.builder;
+package old;
 
 import java.util.List;
 
-import by.alekseyshysh.task2.entity.Analog;
 import by.alekseyshysh.task2.entity.Medicine;
 import by.alekseyshysh.task2.entity.Version;
 
@@ -16,7 +15,7 @@ public interface MedicineBuilder {
 
 	void setGroup(String group);
 
-	void setAnalogs(List<Analog> analogs);
+	void setAnalogs(List<String> analogs);
 
 	void setVersions(List<Version> versions);
 

@@ -1,10 +1,8 @@
-package by.alekseyshysh.task2.stax;
+package by.alekseyshysh.task2.builder;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,59 +14,40 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import by.alekseyshysh.task2.entity.Certificate;
 import by.alekseyshysh.task2.entity.Dosage;
 import by.alekseyshysh.task2.entity.Medicine;
+import by.alekseyshysh.task2.entity.PackageEntity;
 import by.alekseyshysh.task2.entity.Version;
 import by.alekseyshysh.task2.exception.MedicinesException;
+import by.alekseyshysh.task2.stax.MedicinesStAXParser;
 import by.alekseyshysh.task2.tag.MedTag;
-import old.CertificateBuilder;
-import old.CertificateBuilderImpl;
-import old.DosageBuilder;
-import old.DosageBuilderImpl;
-import old.MedicineBuilder;
-import old.MedicineBuilderImpl;
-import old.PackageBuilder;
-import old.PackageBuilderImpl;
-import old.VersionBuilder;
-import old.VersionBuilderImpl;
 
-public class MedicinesStAXParser {
-
+public class StaxMedicineBuilder extends AbstractMedicineBuilder {
+	
 	private XMLEventReader reader;
-
-	private List<Medicine> medicines;
-	private MedicineBuilder medicineBuilder;
-
 	private List<String> analogs;
-
 	private List<Version> versions;
-	private VersionBuilder versionBuilder;
-
-	private CertificateBuilder certificateBuilder;
-
-	private PackageBuilder packageBuilder;
-
 	private List<Dosage> dosages;
-	private DosageBuilder dosageBuilder;
+	private XMLInputFactory xmlInputFactory;
+	
+	private Medicine medicine;
+	private Version version;
+	private Dosage dosage;
+	private Certificate certificate;
+	private PackageEntity packageEntity;
+	
+	public StaxMedicineBuilder() {
+		xmlInputFactory = XMLInputFactory.newInstance();
+	}
 
-	public void setSettings(String path) throws MedicinesException {
-		XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+	@Override
+	public void buildMedicines(String xmlFilePath) throws MedicinesException {
 		try {
-			reader = xmlInputFactory.createXMLEventReader(new FileInputStream(path));
+			reader = xmlInputFactory.createXMLEventReader(new FileInputStream(xmlFilePath));
 		} catch (FileNotFoundException | XMLStreamException e) {
 			throw new MedicinesException(MedicinesStAXParser.class + ": file not found or xml stream exception");
 		}
-	}
-
-	public List<Medicine> getMedicines() {
-		return new ArrayList<>(medicines);
-	}
-	
-	public void parse() throws MedicinesException {
 		try {
 			parseInternal();
 		} catch (XMLStreamException e) {
@@ -86,100 +65,96 @@ public class MedicinesStAXParser {
 					medicines = new ArrayList<>();
 					break;
 				case MedTag.MEDICINE:
-					medicineBuilder = new MedicineBuilderImpl();
-					QName qName = new QName(startElement.getNamespaceURI(MedTag.NAMESPACE_PREFIX),
-							MedTag.ATTRIBUTE_ID, MedTag.NAMESPACE_PREFIX);
+					medicine = new Medicine();
+					QName qName = new QName(MedTag.ATTRIBUTE_ID);
 					String id = startElement.getAttributeByName(qName).getValue();
-					medicineBuilder.setId(id);
+					medicine.setId(id);
 					break;
 				case MedTag.NAME:
 					nextEvent = reader.nextEvent();
-					medicineBuilder.setName(nextEvent.asCharacters().getData());
+					medicine.setName(nextEvent.asCharacters().getData());
 					break;
 				case MedTag.PHARM:
 					nextEvent = reader.nextEvent();
-					medicineBuilder.setPharm(nextEvent.asCharacters().getData());
+					medicine.setPharm(nextEvent.asCharacters().getData());
 					break;
 				case MedTag.GROUP:
 					nextEvent = reader.nextEvent();
-					medicineBuilder.setGroup(nextEvent.asCharacters().getData());
+					medicine.setGroup(nextEvent.asCharacters().getData());
 					break;
 				case MedTag.ANALOGS:
 					analogs = new ArrayList<>();
 					break;
 				case MedTag.ANALOG:
-//					analogBuilder = new AnalogBuilderImpl();
-//					nextEvent = reader.nextEvent();
-//					analogBuilder.setAnalog(nextEvent.asCharacters().getData());
-//					analogs.add(analogBuilder.createInstance());
+					nextEvent = reader.nextEvent();
+					analogs.add(nextEvent.asCharacters().getData());
 					break;
 				case MedTag.VERSIONS:
 					versions = new ArrayList<>();
 					break;
 				case MedTag.VERSION:
-					versionBuilder = new VersionBuilderImpl();
-					QName qDistributionVersion = new QName(startElement.getNamespaceURI(MedTag.NAMESPACE_PREFIX),
-							MedTag.ATTRIBUTE_DISTRIBUTION_VERSION, MedTag.NAMESPACE_PREFIX);
+					version = new Version();
+					QName qDistributionVersion = new QName(MedTag.ATTRIBUTE_DISTRIBUTION_VERSION);
 					String distributionVersion = startElement.getAttributeByName(qDistributionVersion).getValue();
-					versionBuilder.setDistributionVersion(distributionVersion);
+					version.setDistributionVersion(distributionVersion);
 					break;
 				case MedTag.CERTIFICATE:
-					certificateBuilder = new CertificateBuilderImpl();
+					certificate = new Certificate();
 					break;
 				case MedTag.CERTIFICATE_NUMBER:
 					nextEvent = reader.nextEvent();
-					certificateBuilder.setCertificateNumber(Long.parseLong(nextEvent.asCharacters().getData()));
+					certificate.setCertificateNumber(Long.parseLong(nextEvent.asCharacters().getData()));
 					break;
 				case MedTag.CERTIFICATE_ISSUED_DATE_TIME:
 					nextEvent = reader.nextEvent();
 					String dateTimeIssued = nextEvent.asCharacters().getData();
 					LocalDateTime issuedDateTime = LocalDateTime.parse(dateTimeIssued);
-					certificateBuilder.setCertificateIssuedDate(issuedDateTime.toLocalDate());
-					certificateBuilder.setCertificateIssuedTime(issuedDateTime.toLocalTime());
+					certificate.setCertificateIssuedDate(issuedDateTime.toLocalDate());
+					certificate.setCertificateIssuedTime(issuedDateTime.toLocalTime());
 					break;
 				case MedTag.CERTIFICATE_EXPIRES_DATE_TIME:
 					nextEvent = reader.nextEvent();
 					String dateTimeExpires = nextEvent.asCharacters().getData();
 					LocalDateTime expiresDateTime = LocalDateTime.parse(dateTimeExpires);
-					certificateBuilder.setCertificateExpiresDate(expiresDateTime.toLocalDate());
-					certificateBuilder.setCertificateExpiresTime(expiresDateTime.toLocalTime());
+					certificate.setCertificateExpiresDate(expiresDateTime.toLocalDate());
+					certificate.setCertificateExpiresTime(expiresDateTime.toLocalTime());
 					break;
 				case MedTag.CERTIFICATE_REGISTERED_ORGANIZAION:
 					nextEvent = reader.nextEvent();
-					certificateBuilder.setCertificateRegisteredOrganization(nextEvent.asCharacters().getData());
+					certificate.setCertificateRegisteredOrganization(nextEvent.asCharacters().getData());
 					break;
 				case MedTag.PACKAGE:
-					packageBuilder = new PackageBuilderImpl();
+					packageEntity = new PackageEntity();
 					break;
 				case MedTag.PACKAGE_TYPE:
 					nextEvent = reader.nextEvent();
-					packageBuilder.setPackageType(nextEvent.asCharacters().getData());
+					packageEntity.setPackageType(nextEvent.asCharacters().getData());
 					break;
 				case MedTag.PACKAGE_ELEMENTS_COUNT_IN:
 					nextEvent = reader.nextEvent();
-					packageBuilder.setElementsCountIn(Integer.parseInt(nextEvent.asCharacters().getData()));
+					packageEntity.setElementsCountIn(Integer.parseInt(nextEvent.asCharacters().getData()));
 					break;
 				case MedTag.PACKAGE_PRICE:
 					nextEvent = reader.nextEvent();
-					packageBuilder.setPrice(Integer.parseInt(nextEvent.asCharacters().getData()));
+					packageEntity.setPrice(Integer.parseInt(nextEvent.asCharacters().getData()));
 					break;
 				case MedTag.DOSAGES:
 					dosages = new ArrayList<>();
 					break;
 				case MedTag.DOSAGE:
-					dosageBuilder = new DosageBuilderImpl();
+					dosage = new Dosage();
 					break;
 				case MedTag.DOSAGE_DESCRIPTION:
 					nextEvent = reader.nextEvent();
-					dosageBuilder.setDosageDescription(nextEvent.asCharacters().getData());
+					dosage.setDosageDescription(nextEvent.asCharacters().getData());
 					break;
 				case MedTag.DOSAGE_ACTIVE_AGENT:
 					nextEvent = reader.nextEvent();
-					dosageBuilder.setDosageActiveAgent(Integer.parseInt(nextEvent.asCharacters().getData()));
+					dosage.setDosageActiveAgent(Integer.parseInt(nextEvent.asCharacters().getData()));
 					break;
 				case MedTag.DOSAGE_MAXIMUM_USE_PER_DAY:
 					nextEvent = reader.nextEvent();
-					dosageBuilder.setDosageMaximumUsePerDay(Integer.parseInt(nextEvent.asCharacters().getData()));
+					dosage.setDosageMaximumUsePerDay(Integer.parseInt(nextEvent.asCharacters().getData()));
 					break;
 				default:
 					// logger.log(Level.INFO, startElement.getName().getLocalPart());
@@ -190,28 +165,28 @@ public class MedicinesStAXParser {
 				EndElement endElement = nextEvent.asEndElement();
 				switch (endElement.getName().getLocalPart()) {
 				case MedTag.MEDICINE:
-					medicines.add(medicineBuilder.createInstance());
+					medicines.add(medicine);
 					break;
 				case MedTag.ANALOGS:
-					medicineBuilder.setAnalogs(analogs);
+					medicine.setAnalogs(analogs);
 					break;
 				case MedTag.VERSIONS:
-					medicineBuilder.setVersions(versions);
+					medicine.setVersions(versions);
 					break;
 				case MedTag.VERSION:
-					versions.add(versionBuilder.createInstance());
+					versions.add(version);
 					break;
 				case MedTag.CERTIFICATE:
-					versionBuilder.setCertificate(certificateBuilder.createInstance());
+					version.setCertificate(certificate);
 					break;
 				case MedTag.PACKAGE:
-					versionBuilder.setPackageEntity(packageBuilder.createInstance());
+					version.setPackageEntity(packageEntity);
 					break;
 				case MedTag.DOSAGES:
-					versionBuilder.setDosages(dosages);
+					version.setDosages(dosages);
 					break;
 				case MedTag.DOSAGE:
-					dosages.add(dosageBuilder.createInstance());
+					dosages.add(dosage);
 					break;
 				default:
 					// logger.log(Level.INFO, endElement.getName().getLocalPart());

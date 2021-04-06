@@ -1,671 +1,674 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tns:medicines xmlns:tns="http://www.github.com/setevoybog/Task2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.github.com/setevoybog/Task2 MedsShemaXMLS2.xsd ">
+<medicines xmlns:tns="http://www.github.com/setevoybog/Task2" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.github.com/setevoybog/Task2 MedsShemaXMLS.xsd "
+	>
 	<!-- MEDICINE 1 -->
-	<tns:medicine tns:id="i1">   
-		<tns:name>IBUPROFEN</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Non-narcotic analgesics</tns:group>
-		<tns:analogs>
-			<tns:analog>IBUPROFEN-MAX</tns:analog>
-			<tns:analog>IBUPROFEN-SUPER-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions>
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000000</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
-				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i1">   
+		<name>IBUPROFEN</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Non-narcotic analgesics</group>
+		<analogs>
+			<analog>IBUPROFEN-MAX</analog>
+			<analog>IBUPROFEN-SUPER-MAX</analog>
+		</analogs>
+		<versions>
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000000</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 	<!-- MEDICINE 2 -->
-	<tns:medicine tns:id="i2">   
-		<tns:name>Aleffke</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Homeopathic medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>Aleffke-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000002</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
-				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-			<tns:version tns:distribution-version="capsules">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000003</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>jar</tns:package-type>
- 					<tns:package-elements-count-in>30</tns:package-elements-count-in>
- 					<tns:package-price>10</tns:package-price>
- 				</tns:package>
-				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i2">   
+		<name>Aleffke</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Homeopathic medicines</group>
+		<analogs>
+			<analog>Aleffke-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000002</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+			<version distribution-version="capsules">
+ 				<certificate>
+ 					<certificate-number>1000000003</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>jar</package-type>
+ 					<package-elements-count-in>30</package-elements-count-in>
+ 					<package-price>10</package-price>
+ 				</package>
+				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 		<!-- MEDICINE 3 -->
-	<tns:medicine tns:id="i3">   
-		<tns:name>ILKffk</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Hormones and their antagonists</tns:group>
-		<tns:analogs>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000004</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2021-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>ampoules</tns:package-type>
- 					<tns:package-elements-count-in>20</tns:package-elements-count-in>
- 					<tns:package-price>2</tns:package-price>
- 				</tns:package>
-				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i3">   
+		<name>ILKffk</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Hormones and their antagonists</group>
+		<analogs>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000004</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2021-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>ampoules</package-type>
+ 					<package-elements-count-in>20</package-elements-count-in>
+ 					<package-price>2</package-price>
+ 				</package>
+				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 		<!-- MEDICINE 4 -->
-	<tns:medicine tns:id="i4">   
-		<tns:name>IBUPOF</tns:name>
-		<tns:pharm>BREST-PHARM</tns:pharm>
-		<tns:group>Non-narcotic analgesics</tns:group>
-		<tns:analogs>
-			<tns:analog>IBUPOF-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000005</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>syringe</tns:package-type>
- 					<tns:package-elements-count-in>1</tns:package-elements-count-in>
- 					<tns:package-price>100</tns:package-price>
- 				</tns:package>
-				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i4">   
+		<name>IBUPOF</name>
+		<pharm>BREST-PHARM</pharm>
+		<group>Non-narcotic analgesics</group>
+		<analogs>
+			<analog>IBUPOF-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000005</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>syringe</package-type>
+ 					<package-elements-count-in>1</package-elements-count-in>
+ 					<package-price>100</package-price>
+ 				</package>
+				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 		<!-- MEDICINE 6 -->
-	<tns:medicine tns:id="i5">   
-		<tns:name>Sweets</tns:name>
-		<tns:pharm>MINSK-Sweet-PHARM</tns:pharm>
-		<tns:group>Biologically active food additives</tns:group>
-		<tns:analogs>
-			<tns:analog>Sweets-MAX</tns:analog>
-			<tns:analog>Sweets-Super-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000006</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
-				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-			<tns:version tns:distribution-version="powder">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000007</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>aluminum tubes</tns:package-type>
- 					<tns:package-elements-count-in>100</tns:package-elements-count-in>
- 					<tns:package-price>100</tns:package-price>
- 				</tns:package>
-				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i5">   
+		<name>Sweets</name>
+		<pharm>MINSK-Sweet-PHARM</pharm>
+		<group>Biologically active food additives</group>
+		<analogs>
+			<analog>Sweets-MAX</analog>
+			<analog>Sweets-Super-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000006</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+			<version distribution-version="powder">
+ 				<certificate>
+ 					<certificate-number>1000000007</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>aluminum tubes</package-type>
+ 					<package-elements-count-in>100</package-elements-count-in>
+ 					<package-price>100</package-price>
+ 				</package>
+				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 		<!-- MEDICINE 6 -->
-	<tns:medicine tns:id="i6">   
-		<tns:name>Lafafa</tns:name>
-		<tns:pharm>Paris-PHARM</tns:pharm>
-		<tns:group>Diagnostic medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>Lafafa-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000008</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>ParMinzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>bottle</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
-				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i6">   
+		<name>Lafafa</name>
+		<pharm>Paris-PHARM</pharm>
+		<group>Diagnostic medicines</group>
+		<analogs>
+			<analog>Lafafa-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000008</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>ParMinzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>bottle</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 		<!-- MEDICINE 7 -->
-	<tns:medicine tns:id="i7">   
-		<tns:name>IBUPROJEN</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Neurotropic medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>IBUPROJEN-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000009</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>ampoules</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>2</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i7">   
+		<name>IBUPROJEN</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Neurotropic medicines</group>
+		<analogs>
+			<analog>IBUPROJEN-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000009</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>ampoules</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>2</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 		<!-- MEDICINE 8 -->
-	<tns:medicine tns:id="i8">   
-		<tns:name>IBUOFENOL</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Intermediates medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>IBUOFENOL-MAX</tns:analog>
-			<tns:analog>IBUOFENOL-SUPER-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="cream">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000010</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i8">   
+		<name>IBUOFENOL</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Intermediates medicines</group>
+		<analogs>
+			<analog>IBUOFENOL-MAX</analog>
+			<analog>IBUOFENOL-SUPER-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="cream">
+ 				<certificate>
+ 					<certificate-number>1000000010</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 		<!-- MEDICINE 9 -->
-	<tns:medicine tns:id="i9">   
-		<tns:name>IBUCAL</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Metabolics medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>IBUCAL-MAX</tns:analog>
-			<tns:analog>IBUCAL-SUPER-MAX</tns:analog>
-			<tns:analog>IBUCAL-SUPER-DUPER-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="injection">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000011</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>syringe</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i9">   
+		<name>IBUCAL</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Metabolics medicines</group>
+		<analogs>
+			<analog>IBUCAL-MAX</analog>
+			<analog>IBUCAL-SUPER-MAX</analog>
+			<analog>IBUCAL-SUPER-DUPER-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="injection">
+ 				<certificate>
+ 					<certificate-number>1000000011</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>syringe</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 		<!-- MEDICINE 10 -->
-	<tns:medicine tns:id="i10">   
-		<tns:name>FENOLFTA2</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Hematotropic medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>FENOLFTA2-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000012</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>MinzdrR3av</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i10">   
+		<name>FENOLFTA2</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Hematotropic medicines</group>
+		<analogs>
+			<analog>FENOLFTA2-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000012</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>MinzdrR3av</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 		<!-- MEDICINE 11 -->
-	<tns:medicine tns:id="i11">   
-		<tns:name>Koreonol</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Non-narcotic analgesics</tns:group>
-		<tns:analogs>
-			<tns:analog>IBUPROFEN-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000013</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>MMinzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>1</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i11">   
+		<name>Koreonol</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Non-narcotic analgesics</group>
+		<analogs>
+			<analog>IBUPROFEN-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000013</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>MMinzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>1</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 			<!-- MEDICINE 12 -->
-	<tns:medicine tns:id="i12">   
-		<tns:name>IBUPROFEN</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Metabolics medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>IBUPROFEN-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000014</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-						<tns:version tns:distribution-version="ointment">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000114</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>1</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i12">   
+		<name>IBUPROFEN</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Metabolics medicines</group>
+		<analogs>
+			<analog>IBUPROFEN-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000014</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+						<version distribution-version="ointment">
+ 				<certificate>
+ 					<certificate-number>1000000114</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>1</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 			<!-- MEDICINE 13 -->
-	<tns:medicine tns:id="i13">   
-		<tns:name>Iteratokal</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Hematotropic medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>IteratokalN-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000015</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>MinZzzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i13">   
+		<name>Iteratokal</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Hematotropic medicines</group>
+		<analogs>
+			<analog>IteratokalN-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000015</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>MinZzzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 			<!-- MEDICINE 14 -->
-	<tns:medicine tns:id="i14">   
-		<tns:name>INUYA</tns:name>
-		<tns:pharm>Paris-PHARM</tns:pharm>
-		<tns:group>Metabolics medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>INUYA-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000016</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Perzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i14">   
+		<name>INUYA</name>
+		<pharm>Paris-PHARM</pharm>
+		<group>Metabolics medicines</group>
+		<analogs>
+			<analog>INUYA-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000016</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Perzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 			<!-- MEDICINE 15 -->
-	<tns:medicine tns:id="i15">   
-		<tns:name>Luhaunel</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Different medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>Luhaunel-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="solute">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000017</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>bottle</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>10000</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
+	<medicine id="i15">   
+		<name>Luhaunel</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Different medicines</group>
+		<analogs>
+			<analog>Luhaunel-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="solute">
+ 				<certificate>
+ 					<certificate-number>1000000017</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>bottle</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>10000</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
 	
 			<!-- MEDICINE 16 -->
-	<tns:medicine tns:id="i16">   
-		<tns:name>IBUPROFEN2</tns:name>
-		<tns:pharm>MINSK-PHARM</tns:pharm>
-		<tns:group>Metabolics medicines</tns:group>
-		<tns:analogs>
-			<tns:analog>IBUPROFEN2-MAX</tns:analog>
-			<tns:analog>IBUPROFEN3-MAX</tns:analog>
-			<tns:analog>IBUPROFEN4-MAX</tns:analog>
-			<tns:analog>IBUPROFEN5-MAX</tns:analog>
-		</tns:analogs>
-		<tns:versions> 
-			<tns:version tns:distribution-version="pills">
- 				<tns:certificate>
- 					<tns:certificate-number>1000000018</tns:certificate-number>
- 					<tns:certificate-issued-date-time>2020-01-01T00:00:00</tns:certificate-issued-date-time>
- 					<tns:certificate-expires-date-time>2025-01-01T00:00:00</tns:certificate-expires-date-time>
- 					<tns:certificate-registered-organization>Minzdrav</tns:certificate-registered-organization>
- 				</tns:certificate>
- 				<tns:package>
- 					<tns:package-type>cell packaging</tns:package-type>
- 					<tns:package-elements-count-in>10</tns:package-elements-count-in>
- 					<tns:package-price>1</tns:package-price>
- 				</tns:package>
- 				<tns:dosages>
-					<tns:dosage>
-						<tns:dosage-description>Childrens</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-					<tns:dosage>
-						<tns:dosage-description>Adults</tns:dosage-description>
-						<tns:dosage-active-agent>50</tns:dosage-active-agent>
-						<tns:dosage-maximum-use-per-day>5</tns:dosage-maximum-use-per-day>
-					</tns:dosage>
-				</tns:dosages>
-			</tns:version>
-		</tns:versions>
-	</tns:medicine>
-</tns:medicines>
+	<medicine id="i16">   
+		<name>IBUPROFEN2</name>
+		<pharm>MINSK-PHARM</pharm>
+		<group>Metabolics medicines</group>
+		<analogs>
+			<analog>IBUPROFEN2-MAX</analog>
+			<analog>IBUPROFEN3-MAX</analog>
+			<analog>IBUPROFEN4-MAX</analog>
+			<analog>IBUPROFEN5-MAX</analog>
+		</analogs>
+		<versions> 
+			<version distribution-version="pills">
+ 				<certificate>
+ 					<certificate-number>1000000018</certificate-number>
+ 					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
+ 					<certificate-expires-date-time>2025-01-01T00:00:00</certificate-expires-date-time>
+ 					<certificate-registered-organization>Minzdrav</certificate-registered-organization>
+ 				</certificate>
+ 				<package>
+ 					<package-type>cell packaging</package-type>
+ 					<package-elements-count-in>10</package-elements-count-in>
+ 					<package-price>1</package-price>
+ 				</package>
+ 				<dosages>
+					<dosage>
+						<dosage-description>Childrens</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+					<dosage>
+						<dosage-description>Adults</dosage-description>
+						<dosage-active-agent>50</dosage-active-agent>
+						<dosage-maximum-use-per-day>5</dosage-maximum-use-per-day>
+					</dosage>
+				</dosages>
+			</version>
+		</versions>
+	</medicine>
+</medicines>

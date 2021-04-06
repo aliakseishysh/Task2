@@ -2,14 +2,13 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
     targetNamespace="http://www.github.com/setevoybog/Task2"
     xmlns:tns="http://www.github.com/setevoybog/Task2"
-    elementFormDefault="qualified"
     >
 
     <!-- ROOT ELEMENT -->
     <element name="medicines">
         <complexType>
             <sequence>
-                <element ref="tns:medicine" minOccurs="0" maxOccurs="100"/>
+                <element name="medicine" type="tns:medicine-type" minOccurs="0" maxOccurs="100"/>
             </sequence>
         </complexType>
     </element>
@@ -17,49 +16,14 @@
     <!-- CHILD ELEMENT OF ROOT -->
     <complexType name="medicine-type">
         <sequence>
-            <element ref="tns:name"/>
-            <element ref="tns:pharm"/>
-            <element ref="tns:group"/>
-            <element ref="tns:analogs"/>
-            <element ref="tns:versions"/>
+            <element name="name" type="tns:name-type"/>
+            <element name="pharm" type="tns:pharm-type"/>
+            <element name="group" type="tns:group-type"/>
+            <element name="analogs" type="tns:analogs-type"/>
+            <element name="versions" type="tns:versions-type"/>
         </sequence>
-        <attribute ref="tns:id" use="required"/>
+        <attribute name="id" type="tns:medicine-id-type" use="required"/>
     </complexType>
-
-
-    <!-- ELEMENTS FOR TYPES -->
-    <element name="medicine" type="tns:medicine-type"/>
-    <element name="name" type="tns:name-type"/>
-    <element name="pharm" type="tns:pharm-type"/>
-    <element name="group" type="tns:group-type"/>
-    <!-- ANALOGS: medicine.analogs -->
-    <element name="analogs" type="tns:analogs-type"/>
-    <element name="analog" type="tns:analog-type"/>
-    <!-- VERSIONS: medicine.versions -->
-    <element name="versions" type="tns:versions-type"/>
-    <element name="version" type="tns:version-type"/>
-    <!-- CERTIFICATE: medicine.versions.version.certificate -->
-    <element name="certificate" type="tns:certificate-type"/>
-    <element name="certificate-number" type="long"/>
-    <element name="certificate-issued-date-time" type="dateTime"/> <!-- The dateTime is specified in the following form "YYYY-MM-DDThh:mm:ss" -->
-    <element name="certificate-expires-date-time" type="dateTime"/>
-    <element name="certificate-registered-organization" type="string"/>
-    <!-- PACKAGE: medicine.versions.version.package -->
-    <element name="package" type="tns:package-type"/>
-    <element name="package-type" type="tns:package-type-enum-type"/>
-    <element name="package-elements-count-in" type="tns:package-elements-count-in-type"/>
-    <element name="package-price" type="tns:package-price-type"/> <!-- price of package in euro -->
-    <!-- DOSAGE: medicine.versions.version.dosage -->
-    <element name="dosages" type="tns:dosages-type"/>
-    <element name="dosage" type="tns:dosage-type"/>
-    <element name="dosage-description" type="tns:dosage-description-type"/>
-    <element name="dosage-active-agent" type="int"/> <!-- amount of active agent in milligrams -->
-    <element name="dosage-maximum-use-per-day" type="int"/> <!-- amount of elements in package to use per day -->
-    
-    <!-- ATTRIBUTES FOR TYPES -->
-    <attribute name="id" type="tns:medicine-id-type"/>
-    <attribute name="distribution-version" type="tns:distribution-versions-enum-type" default="pills"/>
-    
 
     <!-- ID OF SPECIFIC MEDICINE -->
     <simpleType name="medicine-id-type">
@@ -118,24 +82,24 @@
     <!-- TYPE OF `analogs` ELEMENT -->
     <complexType name="analogs-type">
         <sequence>
-            <element ref="tns:analog" minOccurs="0" maxOccurs="100"/>
+            <element name="analog" type="tns:analog-type" minOccurs="0" maxOccurs="100"/>
         </sequence>
     </complexType>
 
     <!-- TYPE OF `version` ELEMENT -->
     <complexType name="version-type">
         <sequence>
-            <element ref="tns:certificate"/>
-            <element ref="tns:package"/>
-            <element ref="tns:dosage" minOccurs="0" maxOccurs="5"/>
+            <element name="certificate" type="tns:certificate-type"/>
+            <element name="package" type="tns:package-type"/>
+            <element name="dosages" type="tns:dosages-type"/>
         </sequence>
-        <attribute ref="tns:distribution-version" use="required"/>
+        <attribute name="distribution-version" use="required" type="tns:distribution-versions-enum-type"/>
     </complexType>
 
     <!-- TYPE OF `versions` ELEMENT (includes `version`) -->
     <complexType name="versions-type">
         <sequence>
-            <element ref="tns:version" minOccurs="1" maxOccurs="50"/>
+            <element name="version" type="tns:version-type" minOccurs="1" maxOccurs="50"/>
         </sequence>
     </complexType>
 
@@ -156,19 +120,19 @@
     <!-- TYPE OF ELEMENT `sertificate` -->
     <complexType name="certificate-type">
         <sequence>
-            <element ref="tns:certificate-number"/>
-            <element ref="tns:certificate-issued-date-time"/>
-            <element ref="tns:certificate-expires-date-time"/>
-            <element ref="tns:certificate-registered-organization"/>
+            <element name="certificate-number" type="long"/>
+            <element name="certificate-issued-date-time" type="dateTime"/> <!-- The dateTime is specified in the following form "YYYY-MM-DDThh:mm:ss" -->
+            <element name="certificate-expires-date-time" type="dateTime"/>
+            <element name="certificate-registered-organization" type="string"/>
         </sequence>
     </complexType>
 
     <!-- TYPE OF ELEMENT `package` -->
     <complexType name="package-type">
         <sequence>
-            <element ref="tns:package-type"/>
-            <element ref="tns:package-elements-count-in"/>
-            <element ref="tns:package-price"/>
+            <element name="package-type" type="tns:package-type-enum-type"/>
+            <element name="package-elements-count-in" type="tns:package-elements-count-in-type"/>
+            <element name="package-price" type="int"/> <!-- price of package in euro -->
         </sequence>
     </complexType>
     <!-- packages types -->
@@ -187,25 +151,19 @@
         <restriction base="int">
         </restriction>
     </simpleType>
-    <!-- price for package -->
-    <simpleType name="package-price-type">
-        <restriction base="int">
-        </restriction>
-    </simpleType>
-
         
     <!-- TYPE OF `dosages` ELEMENT (includes `dosage`) -->
     <complexType name="dosages-type">
         <sequence>
-            <element ref="tns:dosage" minOccurs="1" maxOccurs="10"/>
+            <element name="dosage" type="tns:dosage-type" minOccurs="1" maxOccurs="10"/>
         </sequence>
     </complexType>
     <!-- type of element `dosage` -->
     <complexType name="dosage-type">
         <sequence>
-            <element ref="tns:dosage-description"/>
-            <element ref="tns:dosage-active-agent"/>
-            <element ref="tns:dosage-maximum-use-per-day"/>
+            <element name="dosage-description" type="tns:dosage-description-type"/>
+            <element name="dosage-active-agent" type="int"/> <!-- amount of active agent in milligrams -->
+            <element name="dosage-maximum-use-per-day" type="int"/> <!-- amount of elements in package to use per day -->
         </sequence>
     </complexType>
     <!-- type of element dosage-description -->
@@ -214,6 +172,5 @@
             <maxLength value="1000"/>
         </restriction>
     </simpleType>
-
 
 </schema>

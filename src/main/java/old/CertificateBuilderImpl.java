@@ -1,9 +1,8 @@
-package by.alekseyshysh.task2.builder.impl;
+package old;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import by.alekseyshysh.task2.builder.CertificateBuilder;
 import by.alekseyshysh.task2.entity.Certificate;
 
 public class CertificateBuilderImpl implements CertificateBuilder {

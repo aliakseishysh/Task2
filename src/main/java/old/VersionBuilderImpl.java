@@ -1,8 +1,7 @@
-package by.alekseyshysh.task2.builder.impl;
+package old;
 
 import java.util.List;
 
-import by.alekseyshysh.task2.builder.VersionBuilder;
 import by.alekseyshysh.task2.entity.Certificate;
 import by.alekseyshysh.task2.entity.Dosage;
 import by.alekseyshysh.task2.entity.PackageEntity;

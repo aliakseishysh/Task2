@@ -1,4 +1,4 @@
-package by.alekseyshysh.task2.sax;
+package old;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
@@ -10,8 +10,6 @@ import org.xml.sax.SAXException;
 import by.alekseyshysh.task2.exception.MedicinesException;
 
 public class MedicinesSAXParser {
-
-	XMLHandler xmlHandler = new XMLHandler();
 
 	public SAXParser createSAXParser() throws MedicinesException {
 		SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();

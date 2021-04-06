@@ -1,8 +1,8 @@
-package by.alekseyshysh.task2.util;
+package by.alekseyshysh.task2.tag;
 
-public final class MedsConstants {
+public final class MedTag {
 
-	private MedsConstants() {
+	private MedTag() {
 	}
 	
 	public static final String NAMESPACE_PREFIX = "tns";

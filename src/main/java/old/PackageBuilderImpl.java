@@ -1,6 +1,5 @@
-package by.alekseyshysh.task2.builder.impl;
+package old;
 
-import by.alekseyshysh.task2.builder.PackageBuilder;
 import by.alekseyshysh.task2.entity.PackageEntity;
 
 public class PackageBuilderImpl implements PackageBuilder {
