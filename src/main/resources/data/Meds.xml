@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<medicines xmlns:tns="http://www.github.com/setevoybog/Task2" 
+<medicines 
+	xmlns="http://www.github.com/setevoybog/Task2" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://www.github.com/setevoybog/Task2 MedsShemaXMLS.xsd "
 	>

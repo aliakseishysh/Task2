@@ -168,7 +168,7 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 			Dosage dosage = new Dosage();
 			dosage.setDosageDescription(dosageDescription);
 			dosage.setDosageActiveAgent(dosageActiveAgent);
-			dosage.setDosageActiveAgent(dosageMax);
+			dosage.setDosageMaximumUsePerDay(dosageMax);
 			dosages.add(dosage);
 		}
 		return dosages;

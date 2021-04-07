@@ -1,172 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.github.com/setevoybog/Task2"
     targetNamespace="http://www.github.com/setevoybog/Task2"
-    xmlns:tns="http://www.github.com/setevoybog/Task2"
+    elementFormDefault="qualified"
     >
 
     <!-- ROOT ELEMENT -->
-    <element name="medicines">
-        <complexType>
-            <sequence>
-                <element name="medicine" type="tns:medicine-type" minOccurs="0" maxOccurs="100"/>
-            </sequence>
-        </complexType>
-    </element>
+    <xs:element name="medicines">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicine" type="medicine-type" minOccurs="0" maxOccurs="100"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <!-- CHILD ELEMENT OF ROOT -->
-    <complexType name="medicine-type">
-        <sequence>
-            <element name="name" type="tns:name-type"/>
-            <element name="pharm" type="tns:pharm-type"/>
-            <element name="group" type="tns:group-type"/>
-            <element name="analogs" type="tns:analogs-type"/>
-            <element name="versions" type="tns:versions-type"/>
-        </sequence>
-        <attribute name="id" type="tns:medicine-id-type" use="required"/>
-    </complexType>
+    <xs:complexType name="medicine-type">
+        <xs:sequence>
+            <xs:element name="name" type="name-type"/>
+            <xs:element name="pharm" type="pharm-type"/>
+            <xs:element name="group" type="group-type"/>
+            <xs:element name="analogs" type="analogs-type"/>
+            <xs:element name="versions" type="versions-type"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="medicine-id-type" use="required"/>
+    </xs:complexType>
 
     <!-- ID OF SPECIFIC MEDICINE -->
-    <simpleType name="medicine-id-type">
-        <restriction base="ID">
-            <pattern value="i[1-9]{1}[0-9]*"/>
-            <maxLength value="9"/>
-        </restriction>
-    </simpleType>
+    <xs:simpleType name="medicine-id-type">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="i[1-9]{1}[0-9]*"/>
+            <xs:maxLength value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- TYPE OF `name` ELEMENT -->
-    <simpleType name="name-type">
-        <restriction base="string"> 
-            <minLength value="1"/>
-            <maxLength value="100"/>
-        </restriction>
-    </simpleType>
+    <xs:simpleType name="name-type">
+        <xs:restriction base="xs:string"> 
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- TYPE OF `analog` ELEMENT -->
-    <simpleType name="analog-type">
-        <restriction base="string"> 
-            <minLength value="1"/>
-            <maxLength value="100"/>
-        </restriction>
-    </simpleType>
+    <xs:simpleType name="analog-type">
+        <xs:restriction base="xs:string"> 
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- TYPE OF `pharm` ELEMENT -->
-    <simpleType name="pharm-type">
-        <restriction base="string"> 
-            <minLength value="1"/>
-            <maxLength value="100"/>
-        </restriction>
-    </simpleType>
+    <xs:simpleType name="pharm-type">
+        <xs:restriction base="xs:string"> 
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- TYPE OF `group` ELEMENT -->
-    <simpleType name="group-type">
-        <restriction base="string">
-            <enumeration value="Vegetotropic medicines"/>
-            <enumeration value="Hematotropic medicines"/>
-            <enumeration value="Homeopathic medicines"/>
-            <enumeration value="Hormones and their antagonists"/>
-            <enumeration value="Diagnostic medicines"/>
-            <enumeration value="Immunotropic medicines"/>
-            <enumeration value="Intermediates medicines"/>
-            <enumeration value="Metabolics medicines"/>
-            <enumeration value="Neurotropic medicines"/>
-            <enumeration value="Non-narcotic analgesics"/>
-            <enumeration value="Organotropic medicines"/>
-            <enumeration value="Antimicrobial, antiparasitic and antihelminthic medicines"/>
-            <enumeration value="Antineoplastic medicines"/>
-            <enumeration value="Regenerants and reparants"/>
-            <enumeration value="Biologically active food additives"/>
-            <enumeration value="Different medicines"/>
-        </restriction>
-    </simpleType>
+    <xs:simpleType name="group-type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Vegetotropic medicines"/>
+            <xs:enumeration value="Hematotropic medicines"/>
+            <xs:enumeration value="Homeopathic medicines"/>
+            <xs:enumeration value="Hormones and their antagonists"/>
+            <xs:enumeration value="Diagnostic medicines"/>
+            <xs:enumeration value="Immunotropic medicines"/>
+            <xs:enumeration value="Intermediates medicines"/>
+            <xs:enumeration value="Metabolics medicines"/>
+            <xs:enumeration value="Neurotropic medicines"/>
+            <xs:enumeration value="Non-narcotic analgesics"/>
+            <xs:enumeration value="Organotropic medicines"/>
+            <xs:enumeration value="Antimicrobial, antiparasitic and antihelminthic medicines"/>
+            <xs:enumeration value="Antineoplastic medicines"/>
+            <xs:enumeration value="Regenerants and reparants"/>
+            <xs:enumeration value="Biologically active food additives"/>
+            <xs:enumeration value="Different medicines"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- TYPE OF `analogs` ELEMENT -->
-    <complexType name="analogs-type">
-        <sequence>
-            <element name="analog" type="tns:analog-type" minOccurs="0" maxOccurs="100"/>
-        </sequence>
-    </complexType>
+    <xs:complexType name="analogs-type">
+        <xs:sequence>
+            <xs:element name="analog" type="analog-type" minOccurs="0" maxOccurs="100"/>
+        </xs:sequence>
+    </xs:complexType>
 
     <!-- TYPE OF `version` ELEMENT -->
-    <complexType name="version-type">
-        <sequence>
-            <element name="certificate" type="tns:certificate-type"/>
-            <element name="package" type="tns:package-type"/>
-            <element name="dosages" type="tns:dosages-type"/>
-        </sequence>
-        <attribute name="distribution-version" use="required" type="tns:distribution-versions-enum-type"/>
-        <attribute name="distributed-by-prescription" use="optional" type="boolean" default="false"/>
-    </complexType>
+    <xs:complexType name="version-type">
+        <xs:sequence>
+            <xs:element name="certificate" type="certificate-type"/>
+            <xs:element name="package" type="package-type"/>
+            <xs:element name="dosages" type="dosages-type"/>
+        </xs:sequence>
+        <xs:attribute name="distribution-version" use="required" type="distribution-versions-enum-type"/>
+        <xs:attribute name="distributed-by-prescription" use="optional" type="xs:boolean" default="false"/>
+    </xs:complexType>
 
     <!-- TYPE OF `versions` ELEMENT (includes `version`) -->
-    <complexType name="versions-type">
-        <sequence>
-            <element name="version" type="tns:version-type" minOccurs="1" maxOccurs="50"/>
-        </sequence>
-    </complexType>
+    <xs:complexType name="versions-type">
+        <xs:sequence>
+            <xs:element name="version" type="version-type" minOccurs="1" maxOccurs="50"/>
+        </xs:sequence>
+    </xs:complexType>
 
     <!-- TYPE OF ATTRIBUTE `version` OF `version` ELEMENT in `versions` ELEMENT -->
-    <simpleType name="distribution-versions-enum-type">
-        <restriction base="string">
-            <enumeration value="ointment"/>
-            <enumeration value="cream"/>
-            <enumeration value="pills"/>
-            <enumeration value="capsules"/>
-            <enumeration value="solute"/>
-            <enumeration value="injection"/>
-            <enumeration value="suspension"/>
-            <enumeration value="powder"/>
-        </restriction>
-    </simpleType>
+    <xs:simpleType name="distribution-versions-enum-type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ointment"/>
+            <xs:enumeration value="cream"/>
+            <xs:enumeration value="pills"/>
+            <xs:enumeration value="capsules"/>
+            <xs:enumeration value="solute"/>
+            <xs:enumeration value="injection"/>
+            <xs:enumeration value="suspension"/>
+            <xs:enumeration value="powder"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- TYPE OF ELEMENT `sertificate` -->
-    <complexType name="certificate-type">
-        <sequence>
-            <element name="certificate-number" type="long"/>
-            <element name="certificate-issued-date-time" type="dateTime"/> <!-- The dateTime is specified in the following form "YYYY-MM-DDThh:mm:ss" -->
-            <element name="certificate-expires-date-time" type="dateTime"/>
-            <element name="certificate-registered-organization" type="string"/>
-        </sequence>
-    </complexType>
+    <xs:complexType name="certificate-type">
+        <xs:sequence>
+            <xs:element name="certificate-number" type="xs:long"/>
+            <xs:element name="certificate-issued-date-time" type="xs:dateTime"/> <!-- The dateTime is specified in the following form "YYYY-MM-DDThh:mm:ss" -->
+            <xs:element name="certificate-expires-date-time" type="xs:dateTime"/>
+            <xs:element name="certificate-registered-organization" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
 
     <!-- TYPE OF ELEMENT `package` -->
-    <complexType name="package-type">
-        <sequence>
-            <element name="package-type" type="tns:package-type-enum-type"/>
-            <element name="package-elements-count-in" type="int"/>
-            <element name="package-price" type="int"/> <!-- price of package in euro -->
-        </sequence>
-    </complexType>
+    <xs:complexType name="package-type">
+        <xs:sequence>
+            <xs:element name="package-type" type="package-type-enum-type"/>
+            <xs:element name="package-elements-count-in" type="xs:int"/>
+            <xs:element name="package-price" type="xs:int"/> <!-- price of package in euro -->
+        </xs:sequence>
+    </xs:complexType>
     <!-- packages types -->
-    <simpleType name="package-type-enum-type">
-        <restriction base="string">
-            <enumeration value="cell packaging"/>
-            <enumeration value="bottle"/>
-            <enumeration value="jar"/>
-            <enumeration value="ampoules"/>
-            <enumeration value="syringe"/>
-            <enumeration value="aluminum tubes"/>
-        </restriction>
-    </simpleType>
+    <xs:simpleType name="package-type-enum-type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="cell packaging"/>
+            <xs:enumeration value="bottle"/>
+            <xs:enumeration value="jar"/>
+            <xs:enumeration value="ampoules"/>
+            <xs:enumeration value="syringe"/>
+            <xs:enumeration value="aluminum tubes"/>
+        </xs:restriction>
+    </xs:simpleType>
         
     <!-- TYPE OF `dosages` ELEMENT (includes `dosage`) -->
-    <complexType name="dosages-type">
-        <sequence>
-            <element name="dosage" type="tns:dosage-type" minOccurs="1" maxOccurs="10"/>
-        </sequence>
-    </complexType>
+    <xs:complexType name="dosages-type">
+        <xs:sequence>
+            <xs:element name="dosage" type="dosage-type" minOccurs="1" maxOccurs="10"/>
+        </xs:sequence>
+    </xs:complexType>
     <!-- type of element `dosage` -->
-    <complexType name="dosage-type">
-        <sequence>
-            <element name="dosage-description" type="tns:dosage-description-type"/>
-            <element name="dosage-active-agent" type="int"/> <!-- amount of active agent in milligrams -->
-            <element name="dosage-maximum-use-per-day" type="int"/> <!-- amount of elements in package to use per day -->
-        </sequence>
-    </complexType>
+    <xs:complexType name="dosage-type">
+        <xs:sequence>
+            <xs:element name="dosage-description" type="dosage-description-type"/>
+            <xs:element name="dosage-active-agent" type="xs:int"/> <!-- amount of active agent in milligrams -->
+            <xs:element name="dosage-maximum-use-per-day" type="xs:int"/> <!-- amount of elements in package to use per day -->
+        </xs:sequence>
+    </xs:complexType>
     <!-- type of element dosage-description -->
-    <simpleType name="dosage-description-type">
-        <restriction base = "string">
-            <maxLength value="1000"/>
-        </restriction>
-    </simpleType>
+    <xs:simpleType name="dosage-description-type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
 
-</schema>
+</xs:schema>

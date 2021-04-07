@@ -22,7 +22,6 @@ import by.alekseyshysh.task2.entity.PackageEntity;
 import by.alekseyshysh.task2.entity.Version;
 import by.alekseyshysh.task2.exception.MedicinesException;
 import by.alekseyshysh.task2.parameter.MedsParameter;
-import old.MedicinesStAXParser;
 
 public class StaxMedicineBuilder extends AbstractMedicineBuilder {
 	
@@ -47,12 +46,12 @@ public class StaxMedicineBuilder extends AbstractMedicineBuilder {
 		try {
 			reader = xmlInputFactory.createXMLEventReader(new FileInputStream(xmlFilePath));
 		} catch (FileNotFoundException | XMLStreamException e) {
-			throw new MedicinesException(MedicinesStAXParser.class + ": file not found or xml stream exception");
+			throw new MedicinesException(StaxMedicineBuilder.class + ": file not found or xml stream exception");
 		}
 		try {
 			parseInternal();
 		} catch (XMLStreamException e) {
-			throw new MedicinesException(MedicinesStAXParser.class + ": Error while parsing");
+			throw new MedicinesException(StaxMedicineBuilder.class + ": Error while parsing");
 		}
 	}
 
