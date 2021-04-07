@@ -13,7 +13,7 @@
 			<analog>IBUPROFEN-SUPER-MAX</analog>
 		</analogs>
 		<versions>
-			<version distribution-version="pills">
+			<version distribution-version="pills" distributed-by-prescription="true">
  				<certificate>
  					<certificate-number>1000000000</certificate-number>
  					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
@@ -75,7 +75,7 @@
 					</dosage>
 				</dosages>
 			</version>
-			<version distribution-version="capsules">
+			<version distribution-version="capsules" distributed-by-prescription="true">
  				<certificate>
  					<certificate-number>1000000003</certificate-number>
  					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>
@@ -111,7 +111,7 @@
 		<analogs>
 		</analogs>
 		<versions> 
-			<version distribution-version="pills">
+			<version distribution-version="pills" distributed-by-prescription="true">
  				<certificate>
  					<certificate-number>1000000004</certificate-number>
  					<certificate-issued-date-time>2020-01-01T00:00:00</certificate-issued-date-time>

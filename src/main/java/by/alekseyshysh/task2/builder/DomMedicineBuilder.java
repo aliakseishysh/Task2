@@ -22,7 +22,7 @@ import by.alekseyshysh.task2.entity.Medicine;
 import by.alekseyshysh.task2.entity.PackageEntity;
 import by.alekseyshysh.task2.entity.Version;
 import by.alekseyshysh.task2.exception.MedicinesException;
-import by.alekseyshysh.task2.tag.MedTag;
+import by.alekseyshysh.task2.parameter.MedsParameter;
 
 public class DomMedicineBuilder extends AbstractMedicineBuilder {
 
@@ -44,7 +44,7 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 		try {
 			document = documentBuilder.parse(new File(xmlFilePath));
 			document.getDocumentElement().normalize();
-			NodeList medicinesXML = document.getElementsByTagName(MedTag.MEDICINE);
+			NodeList medicinesXML = document.getElementsByTagName(MedsParameter.MEDICINE);
 			for (int i = 0; i < medicinesXML.getLength(); i++) {
 				Node medicineNode = medicinesXML.item(i);
 				Medicine medicine = new Medicine();
@@ -58,10 +58,10 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 
 	private void buildMedicine(Node medicineNode, Medicine medicine) {
 		Element medicineElement = (Element) medicineNode;
-		String id = parseAttribute(medicineElement, MedTag.ATTRIBUTE_ID);
-		String name = parseField(medicineElement, MedTag.NAME);
-		String pharm = parseField(medicineElement, MedTag.PHARM);
-		String group = parseField(medicineElement, MedTag.GROUP);
+		String id = parseAttribute(medicineElement, MedsParameter.ATTRIBUTE_ID);
+		String name = parseField(medicineElement, MedsParameter.NAME);
+		String pharm = parseField(medicineElement, MedsParameter.PHARM);
+		String group = parseField(medicineElement, MedsParameter.GROUP);
 
 		List<String> analogs = parseAnalogs(medicineElement);
 		List<Version> versions = parseVersions(medicineElement);
@@ -76,7 +76,7 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 
 	private List<String> parseAnalogs(Element medicineXML) {
 		var analogs = new ArrayList<String>();
-		NodeList analogsXML = medicineXML.getElementsByTagName(MedTag.ANALOG);
+		NodeList analogsXML = medicineXML.getElementsByTagName(MedsParameter.ANALOG);
 		for (int j = 0; j < analogsXML.getLength(); j++) {
 			Node analogNode = analogsXML.item(j);
 			analogs.add(parseAnalog(analogNode));
@@ -92,7 +92,7 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 
 	private List<Version> parseVersions(Element medicineXML) {
 		var versions = new ArrayList<Version>();
-		NodeList versionsXML = medicineXML.getElementsByTagName(MedTag.VERSION);
+		NodeList versionsXML = medicineXML.getElementsByTagName(MedsParameter.VERSION);
 		for (int i = 0; i < versionsXML.getLength(); i++) {
 			Node versionNode = versionsXML.item(i);
 			versions.add(parseVersion(versionNode));
@@ -102,12 +102,15 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 
 	private Version parseVersion(Node versionNode) {
 		Element versionElement = (Element) versionNode;
-		String distributionVersion = parseAttribute(versionElement, MedTag.ATTRIBUTE_DISTRIBUTION_VERSION);
-		Certificate certificate = parseCertificate(versionElement.getElementsByTagName(MedTag.CERTIFICATE));
-		PackageEntity packageEntity = parsePackage(versionElement.getElementsByTagName(MedTag.PACKAGE));
-		List<Dosage> dosages = parseDosages(versionElement.getElementsByTagName(MedTag.DOSAGE));
+		String distributionVersion = parseAttribute(versionElement, MedsParameter.ATTRIBUTE_DISTRIBUTION_VERSION);
+		boolean distributedByPrescription = Boolean.parseBoolean(
+				parseAttribute(versionElement, MedsParameter.ATTRIBUTE_DISTRIBUTED_BY_PRESCRIPTION));
+		Certificate certificate = parseCertificate(versionElement.getElementsByTagName(MedsParameter.CERTIFICATE));
+		PackageEntity packageEntity = parsePackage(versionElement.getElementsByTagName(MedsParameter.PACKAGE));
+		List<Dosage> dosages = parseDosages(versionElement.getElementsByTagName(MedsParameter.DOSAGE));
 		Version version = new Version();
 		version.setDistributionVersion(distributionVersion);
+		version.setDistributedByPrescription(distributedByPrescription);
 		version.setCertificate(certificate);
 		version.setPackageEntity(packageEntity);
 		version.setDosages(dosages);
@@ -122,28 +125,29 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 
 	private Certificate parseCertificate(NodeList certificateXML) {
 		Element certificateElement = (Element) certificateXML.item(0);
-		String certificateNumberString = parseField(certificateElement, MedTag.CERTIFICATE_NUMBER);
+		String certificateNumberString = parseField(certificateElement, MedsParameter.CERTIFICATE_NUMBER);
 		long certificateNumber = Long.parseLong(certificateNumberString);
 		Certificate certificate = new Certificate();
 		certificate.setCertificateNumber(certificateNumber);
-		LocalDateTime localDateTime = parseDateTime(certificateElement, MedTag.CERTIFICATE_ISSUED_DATE_TIME);
+		LocalDateTime localDateTime = parseDateTime(certificateElement, MedsParameter.CERTIFICATE_ISSUED_DATE_TIME);
 		certificate.setCertificateIssuedDate(localDateTime.toLocalDate());
 		certificate.setCertificateIssuedTime(localDateTime.toLocalTime());
-		localDateTime = parseDateTime(certificateElement, MedTag.CERTIFICATE_EXPIRES_DATE_TIME);
+		localDateTime = parseDateTime(certificateElement, MedsParameter.CERTIFICATE_EXPIRES_DATE_TIME);
 		certificate.setCertificateExpiresDate(localDateTime.toLocalDate());
 		certificate.setCertificateExpiresTime(localDateTime.toLocalTime());
 
-		String certificateOrganization = parseField(certificateElement, MedTag.CERTIFICATE_REGISTERED_ORGANIZAION);
+		String certificateOrganization = parseField(certificateElement,
+				MedsParameter.CERTIFICATE_REGISTERED_ORGANIZAION);
 		certificate.setCertificateRegisteredOrganization(certificateOrganization);
 		return certificate;
 	}
 
 	private PackageEntity parsePackage(NodeList packageXML) {
 		Element packageElement = (Element) packageXML.item(0);
-		String packageType = parseField(packageElement, MedTag.PACKAGE_TYPE);
-		String packageElementsInString = parseField(packageElement, MedTag.PACKAGE_ELEMENTS_COUNT_IN);
+		String packageType = parseField(packageElement, MedsParameter.PACKAGE_TYPE);
+		String packageElementsInString = parseField(packageElement, MedsParameter.PACKAGE_ELEMENTS_COUNT_IN);
 		int packageElementsIn = Integer.parseInt(packageElementsInString);
-		String packagePriceString = parseField(packageElement, MedTag.PACKAGE_PRICE);
+		String packagePriceString = parseField(packageElement, MedsParameter.PACKAGE_PRICE);
 		int packagePrice = Integer.parseInt(packagePriceString);
 		PackageEntity packageEntity = new PackageEntity();
 		packageEntity.setPackageType(packageType);
@@ -156,10 +160,10 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 		var dosages = new ArrayList<Dosage>();
 		for (int i = 0; i < dosagesXML.getLength(); i++) {
 			Element dosageElement = (Element) dosagesXML.item(i);
-			String dosageDescription = parseField(dosageElement, MedTag.DOSAGE_DESCRIPTION);
-			String dosageActiveAgentString = parseField(dosageElement, MedTag.DOSAGE_ACTIVE_AGENT);
+			String dosageDescription = parseField(dosageElement, MedsParameter.DOSAGE_DESCRIPTION);
+			String dosageActiveAgentString = parseField(dosageElement, MedsParameter.DOSAGE_ACTIVE_AGENT);
 			int dosageActiveAgent = Integer.parseInt(dosageActiveAgentString);
-			String dosageMaxString = parseField(dosageElement, MedTag.DOSAGE_MAXIMUM_USE_PER_DAY);
+			String dosageMaxString = parseField(dosageElement, MedsParameter.DOSAGE_MAXIMUM_USE_PER_DAY);
 			int dosageMax = Integer.parseInt(dosageMaxString);
 			Dosage dosage = new Dosage();
 			dosage.setDosageDescription(dosageDescription);

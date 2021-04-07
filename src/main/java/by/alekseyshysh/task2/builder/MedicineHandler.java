@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.namespace.QName;
+
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,161 +17,162 @@ import by.alekseyshysh.task2.entity.Dosage;
 import by.alekseyshysh.task2.entity.Medicine;
 import by.alekseyshysh.task2.entity.PackageEntity;
 import by.alekseyshysh.task2.entity.Version;
-import by.alekseyshysh.task2.tag.MedTag;
+import by.alekseyshysh.task2.parameter.MedsParameter;
 
 public class MedicineHandler extends DefaultHandler {
-	
+
 	private static final Logger logger = LogManager.getRootLogger();
 	private List<Medicine> medicines;
 	private List<String> analogs;
 	private List<Version> versions;
 	private List<Dosage> dosages;
-    private StringBuilder elementValue;
+	private StringBuilder elementValue;
 
-    private Medicine medicine;
-    private Version version;
-    private Certificate certificate;
-    private PackageEntity packageEntity;
-    private Dosage dosage;
+	private Medicine medicine;
+	private Version version;
+	private Certificate certificate;
+	private PackageEntity packageEntity;
+	private Dosage dosage;
 
-    public MedicineHandler() {
-    	medicines = new ArrayList<>();
-    }
-    
-    public List<Medicine> getMedicines() {
+	public MedicineHandler() {
+		medicines = new ArrayList<>();
+	}
+
+	public List<Medicine> getMedicines() {
 		return new ArrayList<>(medicines);
 	}
 
 	@Override
 	public void characters(char[] ch, int start, int length) {
 		elementValue = new StringBuilder();
-        elementValue.append(ch, start, length);
-        //String result = elementValue.toString();
-        //logger.log(Level.INFO, result);
+		elementValue.append(ch, start, length);
+		// String result = elementValue.toString();
+		// logger.log(Level.INFO, result);
 	}
-	
+
 	@Override
-    public void startDocument() {
+	public void startDocument() {
 		elementValue = new StringBuilder();
 	}
-	
+
 	@Override
-    public void startElement(String uri, String lName, String qName, Attributes attr) {
+	public void startElement(String uri, String lName, String qName, Attributes attributes) {
 		switch (qName) {
-			case MedTag.MEDICINES:
-				elementValue = new StringBuilder();
-				break;
-			case MedTag.MEDICINE:
-				medicine = new Medicine();
-				medicine.setId(attr.getValue(0));
-				break;
-			case MedTag.ANALOGS:
-				analogs = new ArrayList<>();
-				break;
-			case MedTag.VERSIONS:
-				versions = new ArrayList<>();
-				break;
-			case MedTag.VERSION:
-				version = new Version();
-				version.setDistributionVersion(attr.getValue(0));
-				break;
-			case MedTag.CERTIFICATE:
-				certificate = new Certificate();
-				break;
-			case MedTag.PACKAGE:
-				packageEntity = new PackageEntity();
-				break;
-			case MedTag.DOSAGES:
-				dosages = new ArrayList<>();
-				break;
-			case MedTag.DOSAGE:
-				dosage = new Dosage();
-				break;
-			default:
-				String result = elementValue.toString();
-				// logger.log(Level.INFO, lName, result);
-				break;
+		case MedsParameter.MEDICINES:
+		 	elementValue = new StringBuilder();
+			break;
+		case MedsParameter.MEDICINE:
+			medicine = new Medicine();
+			medicine.setId(attributes.getValue(0));
+			break;
+		case MedsParameter.ANALOGS:
+			analogs = new ArrayList<>();
+			break;
+		case MedsParameter.VERSIONS:
+			versions = new ArrayList<>();
+			break;
+		case MedsParameter.VERSION:
+			version = new Version();
+			version.setDistributionVersion(attributes.getValue(0));
+			version.setDistributedByPrescription(Boolean.parseBoolean(attributes.getValue(1)));
+			break;
+		case MedsParameter.CERTIFICATE:
+			certificate = new Certificate();
+			break;
+		case MedsParameter.PACKAGE:
+			packageEntity = new PackageEntity();
+			break;
+		case MedsParameter.DOSAGES:
+			dosages = new ArrayList<>();
+			break;
+		case MedsParameter.DOSAGE:
+			dosage = new Dosage();
+			break;
+		default:
+			String result = elementValue.toString();
+			// logger.log(Level.INFO, lName, result);
+			break;
 		}
 	}
-	
+
 	@Override
-    public void endElement(String uri, String localName, String qName) {
+	public void endElement(String uri, String localName, String qName) {
 		switch (qName) {
-		case MedTag.MEDICINE:
+		case MedsParameter.MEDICINE:
 			medicines.add(medicine);
 			break;
-		case MedTag.NAME:
+		case MedsParameter.NAME:
 			medicine.setName(elementValue.toString());
 			break;
-		case MedTag.PHARM:
+		case MedsParameter.PHARM:
 			medicine.setPharm(elementValue.toString());
 			break;
-		case MedTag.GROUP:
+		case MedsParameter.GROUP:
 			medicine.setGroup(elementValue.toString());
 			break;
-		case MedTag.ANALOGS:
+		case MedsParameter.ANALOGS:
 			medicine.setAnalogs(analogs);
 			break;
-		case MedTag.ANALOG:
+		case MedsParameter.ANALOG:
 			analogs.add(elementValue.toString());
 			break;
-		case MedTag.VERSIONS:
+		case MedsParameter.VERSIONS:
 			medicine.setVersions(versions);
 			break;
-		case MedTag.VERSION:
+		case MedsParameter.VERSION:
 			versions.add(version);
 			break;
-		case MedTag.CERTIFICATE:
+		case MedsParameter.CERTIFICATE:
 			version.setCertificate(certificate);
 			break;
-		case MedTag.CERTIFICATE_NUMBER:
+		case MedsParameter.CERTIFICATE_NUMBER:
 			certificate.setCertificateNumber(Long.parseLong(elementValue.toString()));
 			break;
-		case MedTag.CERTIFICATE_ISSUED_DATE_TIME: 
-				String dateTimeIssued = elementValue.toString();
-				LocalDateTime localDateTimeIssued = LocalDateTime.parse(dateTimeIssued);
-				certificate.setCertificateIssuedDate(localDateTimeIssued.toLocalDate());
-				certificate.setCertificateIssuedTime(localDateTimeIssued.toLocalTime());
+		case MedsParameter.CERTIFICATE_ISSUED_DATE_TIME:
+			String dateTimeIssued = elementValue.toString();
+			LocalDateTime localDateTimeIssued = LocalDateTime.parse(dateTimeIssued);
+			certificate.setCertificateIssuedDate(localDateTimeIssued.toLocalDate());
+			certificate.setCertificateIssuedTime(localDateTimeIssued.toLocalTime());
 			break;
-		case MedTag.CERTIFICATE_EXPIRES_DATE_TIME:
-				String dateTimeExpires = elementValue.toString();
-				LocalDateTime localDateTimeExpires = LocalDateTime.parse(dateTimeExpires);
-				certificate.setCertificateExpiresDate(localDateTimeExpires.toLocalDate());
-				certificate.setCertificateExpiresTime(localDateTimeExpires.toLocalTime());
+		case MedsParameter.CERTIFICATE_EXPIRES_DATE_TIME:
+			String dateTimeExpires = elementValue.toString();
+			LocalDateTime localDateTimeExpires = LocalDateTime.parse(dateTimeExpires);
+			certificate.setCertificateExpiresDate(localDateTimeExpires.toLocalDate());
+			certificate.setCertificateExpiresTime(localDateTimeExpires.toLocalTime());
 			break;
-		case MedTag.CERTIFICATE_REGISTERED_ORGANIZAION:
+		case MedsParameter.CERTIFICATE_REGISTERED_ORGANIZAION:
 			certificate.setCertificateRegisteredOrganization(elementValue.toString());
 			break;
-		case MedTag.PACKAGE:
+		case MedsParameter.PACKAGE:
 			version.setPackageEntity(packageEntity);
 			break;
-		case MedTag.PACKAGE_TYPE:
+		case MedsParameter.PACKAGE_TYPE:
 			packageEntity.setPackageType(elementValue.toString());
 			break;
-		case MedTag.PACKAGE_ELEMENTS_COUNT_IN:
+		case MedsParameter.PACKAGE_ELEMENTS_COUNT_IN:
 			packageEntity.setElementsCountIn(Integer.parseInt(elementValue.toString()));
 			break;
-		case MedTag.PACKAGE_PRICE:
+		case MedsParameter.PACKAGE_PRICE:
 			packageEntity.setPrice(Integer.parseInt(elementValue.toString()));
 			break;
-		case MedTag.DOSAGES:
+		case MedsParameter.DOSAGES:
 			version.setDosages(dosages);
 			break;
-		case MedTag.DOSAGE:
+		case MedsParameter.DOSAGE:
 			dosages.add(dosage);
 			break;
-		case MedTag.DOSAGE_DESCRIPTION:
+		case MedsParameter.DOSAGE_DESCRIPTION:
 			dosage.setDosageDescription(elementValue.toString());
 			break;
-		case MedTag.DOSAGE_ACTIVE_AGENT:
+		case MedsParameter.DOSAGE_ACTIVE_AGENT:
 			dosage.setDosageActiveAgent(Integer.parseInt(elementValue.toString()));
 			break;
-		case MedTag.DOSAGE_MAXIMUM_USE_PER_DAY:
+		case MedsParameter.DOSAGE_MAXIMUM_USE_PER_DAY:
 			dosage.setDosageMaximumUsePerDay(Integer.parseInt(elementValue.toString()));
 			break;
 		default:
 			String result = elementValue.toString();
-			//logger.log(Level.INFO, localName, result);
+			// logger.log(Level.INFO, localName, result);
 			break;
 		}
 	}

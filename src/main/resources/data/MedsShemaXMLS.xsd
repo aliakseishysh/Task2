@@ -94,6 +94,7 @@
             <element name="dosages" type="tns:dosages-type"/>
         </sequence>
         <attribute name="distribution-version" use="required" type="tns:distribution-versions-enum-type"/>
+        <attribute name="distributed-by-prescription" use="optional" type="boolean" default="false"/>
     </complexType>
 
     <!-- TYPE OF `versions` ELEMENT (includes `version`) -->
@@ -131,7 +132,7 @@
     <complexType name="package-type">
         <sequence>
             <element name="package-type" type="tns:package-type-enum-type"/>
-            <element name="package-elements-count-in" type="tns:package-elements-count-in-type"/>
+            <element name="package-elements-count-in" type="int"/>
             <element name="package-price" type="int"/> <!-- price of package in euro -->
         </sequence>
     </complexType>
@@ -144,11 +145,6 @@
             <enumeration value="ampoules"/>
             <enumeration value="syringe"/>
             <enumeration value="aluminum tubes"/>
-        </restriction>
-    </simpleType>
-    <!-- number of elements in package -->
-    <simpleType name="package-elements-count-in-type">
-        <restriction base="int">
         </restriction>
     </simpleType>
         

@@ -1,8 +1,8 @@
-package by.alekseyshysh.task2.tag;
+package by.alekseyshysh.task2.parameter;
 
-public final class MedTag {
+public final class MedsParameter {
 
-	private MedTag() {
+	private MedsParameter() {
 	}
 	
 	public static final String NAMESPACE_PREFIX = "tns";
@@ -10,6 +10,7 @@ public final class MedTag {
 	public static final String MEDICINES = "medicines";
 	public static final String MEDICINE = "medicine";
 	public static final String ATTRIBUTE_ID = "id";
+	public static final String ATTRIBUTE_DISTRIBUTED_BY_PRESCRIPTION = "distributed-by-prescription";
 	public static final String NAME = "name";
 	public static final String PHARM = "pharm";
 	public static final String GROUP = "group";
