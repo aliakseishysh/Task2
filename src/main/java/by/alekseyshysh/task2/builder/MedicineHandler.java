@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.namespace.QName;
-
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -46,8 +44,6 @@ public class MedicineHandler extends DefaultHandler {
 	public void characters(char[] ch, int start, int length) {
 		elementValue = new StringBuilder();
 		elementValue.append(ch, start, length);
-		// String result = elementValue.toString();
-		// logger.log(Level.INFO, result);
 	}
 
 	@Override
@@ -56,8 +52,8 @@ public class MedicineHandler extends DefaultHandler {
 	}
 
 	@Override
-	public void startElement(String uri, String lName, String qName, Attributes attributes) {
-		switch (qName) {
+	public void startElement(String uri, String localName, String qualifiedName, Attributes attributes) {
+		switch (qualifiedName) {
 		case MedsParameter.MEDICINES:
 		 	elementValue = new StringBuilder();
 			break;
@@ -89,15 +85,14 @@ public class MedicineHandler extends DefaultHandler {
 			dosage = new Dosage();
 			break;
 		default:
-			String result = elementValue.toString();
-			// logger.log(Level.INFO, lName, result);
+			logger.log(Level.DEBUG, qualifiedName);
 			break;
 		}
 	}
 
 	@Override
-	public void endElement(String uri, String localName, String qName) {
-		switch (qName) {
+	public void endElement(String uri, String localName, String qualifiedName) {
+		switch (qualifiedName) {
 		case MedsParameter.MEDICINE:
 			medicines.add(medicine);
 			break;
@@ -171,8 +166,7 @@ public class MedicineHandler extends DefaultHandler {
 			dosage.setDosageMaximumUsePerDay(Integer.parseInt(elementValue.toString()));
 			break;
 		default:
-			String result = elementValue.toString();
-			// logger.log(Level.INFO, localName, result);
+			logger.log(Level.DEBUG, qualifiedName);
 			break;
 		}
 	}

@@ -29,7 +29,7 @@ public class MedsValidator {
 	}
 
 	public static boolean validateXMLFile(String xmlPath, String xsdPath)
-			throws MedicinesException, ParserConfigurationException {
+			throws MedicinesException {
 
 		SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		try {
@@ -43,6 +43,8 @@ public class MedsValidator {
 			validator.validate(source);
 		} catch (IOException e) {
 			throw new MedicinesException("Can't open file: " + xmlPath, e);
+		} catch (ParserConfigurationException e) {
+			logger.warn("Parser configuration exception ", e);
 		} catch (SAXException e) {
 			logger.warn("File {} is not valid: ", xmlPath, e);
 			return false;

@@ -11,7 +11,6 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import by.alekseyshysh.task2.builder.DomMedicineBuilder;
 import by.alekseyshysh.task2.entity.Certificate;
 import by.alekseyshysh.task2.entity.Dosage;
 import by.alekseyshysh.task2.entity.Medicine;
@@ -47,9 +46,10 @@ public class DomMedicineBuilderTest {
 				add(new Version("pills", true, certificate, packageEntity, dosages));
 			}
 		};
+		List<Medicine> medicines = builder.getMedicines();
 		Medicine expected = new Medicine("i1", "IBUPROFEN", "MINSK-PHARM", "Non-narcotic analgesics", analogs,
 				versions);
-		List<Medicine> medicines = builder.getMedicines();
-		Assert.assertEquals(expected, medicines.get(0));
+		Medicine actual = medicines.get(0);
+		Assert.assertEquals(expected, actual);
 	}
 }

@@ -25,9 +25,9 @@
 	</Appenders>
 
 	<Loggers>
-		<Root level="info">
-			<AppenderRef ref="Console" level="info" />
-			<AppenderRef ref="LogFile" level="info" />
+		<Root level="error">
+			<AppenderRef ref="Console" level="error" />
+			<AppenderRef ref="LogFile" level="error" />
 		</Root>
 	</Loggers>
 </Configuration>

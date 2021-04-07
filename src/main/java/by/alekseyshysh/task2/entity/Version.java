@@ -1,5 +1,6 @@
 package by.alekseyshysh.task2.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,8 +40,12 @@ public class Version {
 		this.distributionVersion = distributionVersion;
 	}
 
+	/**
+	 * TODO it's ok? 
+	 * @see Certificate#Certificate(Certificate)
+	 */
 	public Certificate getCertificate() {
-		return certificate;
+		return new Certificate(certificate);
 	}
 
 	public void setCertificate(Certificate certificate) {
@@ -56,11 +61,11 @@ public class Version {
 	}
 
 	public List<Dosage> getDosages() {
-		return dosages;
+		return new ArrayList<>(dosages);
 	}
 
 	public void setDosages(List<Dosage> dosages) {
-		this.dosages = dosages;
+		this.dosages = new ArrayList<>(dosages);
 	}
 
 	@Override

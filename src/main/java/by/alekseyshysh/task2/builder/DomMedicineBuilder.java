@@ -52,7 +52,7 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 				medicines.add(medicine);
 			}
 		} catch (SAXException | IOException e) {
-			throw new MedicinesException("Problem with input file");
+			throw new MedicinesException("Problem with input file" + xmlFilePath, e);
 		}
 	}
 
@@ -62,10 +62,8 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 		String name = parseField(medicineElement, MedsParameter.NAME);
 		String pharm = parseField(medicineElement, MedsParameter.PHARM);
 		String group = parseField(medicineElement, MedsParameter.GROUP);
-
 		List<String> analogs = parseAnalogs(medicineElement);
 		List<Version> versions = parseVersions(medicineElement);
-
 		medicine.setId(id);
 		medicine.setName(name);
 		medicine.setPharm(pharm);
@@ -103,8 +101,8 @@ public class DomMedicineBuilder extends AbstractMedicineBuilder {
 	private Version parseVersion(Node versionNode) {
 		Element versionElement = (Element) versionNode;
 		String distributionVersion = parseAttribute(versionElement, MedsParameter.ATTRIBUTE_DISTRIBUTION_VERSION);
-		boolean distributedByPrescription = Boolean.parseBoolean(
-				parseAttribute(versionElement, MedsParameter.ATTRIBUTE_DISTRIBUTED_BY_PRESCRIPTION));
+		boolean distributedByPrescription = Boolean
+				.parseBoolean(parseAttribute(versionElement, MedsParameter.ATTRIBUTE_DISTRIBUTED_BY_PRESCRIPTION));
 		Certificate certificate = parseCertificate(versionElement.getElementsByTagName(MedsParameter.CERTIFICATE));
 		PackageEntity packageEntity = parsePackage(versionElement.getElementsByTagName(MedsParameter.PACKAGE));
 		List<Dosage> dosages = parseDosages(versionElement.getElementsByTagName(MedsParameter.DOSAGE));

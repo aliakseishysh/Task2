@@ -23,7 +23,6 @@ public class SaxMedicineBuilder extends AbstractMedicineBuilder {
 			SAXParser saxParser = saxParserFactory.newSAXParser();
 			reader = saxParser.getXMLReader();
 			reader.setContentHandler(medicineHandler);
-			reader.setErrorHandler(new MedicineErrorHandler());
 		} catch (ParserConfigurationException | SAXException e) {
 			throw new MedicinesException("Parser configuration error", e);
 		}

@@ -10,18 +10,16 @@ public abstract class AbstractMedicineBuilder {
 	
 	protected List<Medicine> medicines;
 	
-	public AbstractMedicineBuilder() {
+	protected AbstractMedicineBuilder() {
 		medicines = new ArrayList<>();
 	}
 	
-	// TODO Clone
-	public AbstractMedicineBuilder(List<Medicine> medicines) {
-		this.medicines = medicines;
+	protected AbstractMedicineBuilder(List<Medicine> medicines) {
+		this.medicines = new ArrayList<>(medicines);
 	}
 	
-	// TODO Clone
 	public List<Medicine> getMedicines() {
-		return medicines;
+		return new ArrayList<>(medicines);
 	}
 	
 	public abstract void buildMedicines(String xmlFilePath) throws MedicinesException;

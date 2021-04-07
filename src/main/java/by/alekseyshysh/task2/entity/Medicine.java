@@ -1,5 +1,7 @@
 package by.alekseyshysh.task2.entity;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Medicine {
@@ -57,19 +59,19 @@ public class Medicine {
 	}
 
 	public List<String> getAnalogs() {
-		return analogs;
+		return new ArrayList<>(analogs);
 	}
 
 	public void setAnalogs(List<String> analogs) {
-		this.analogs = analogs;
+		this.analogs = new ArrayList<>(analogs);
 	}
 
 	public List<Version> getVersions() {
-		return versions;
+		return new ArrayList<>(versions);
 	}
 
 	public void setVersions(List<Version> versions) {
-		this.versions = versions;
+		this.versions = new ArrayList<>(versions);
 	}
 
 	@Override

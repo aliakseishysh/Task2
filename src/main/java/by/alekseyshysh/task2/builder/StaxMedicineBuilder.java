@@ -15,6 +15,10 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import by.alekseyshysh.task2.entity.Certificate;
 import by.alekseyshysh.task2.entity.Dosage;
 import by.alekseyshysh.task2.entity.Medicine;
@@ -24,19 +28,20 @@ import by.alekseyshysh.task2.exception.MedicinesException;
 import by.alekseyshysh.task2.parameter.MedsParameter;
 
 public class StaxMedicineBuilder extends AbstractMedicineBuilder {
-	
+
+	private static Logger logger = LogManager.getRootLogger();
 	private XMLEventReader reader;
 	private List<String> analogs;
 	private List<Version> versions;
 	private List<Dosage> dosages;
 	private XMLInputFactory xmlInputFactory;
-	
+
 	private Medicine medicine;
 	private Version version;
 	private Dosage dosage;
 	private Certificate certificate;
 	private PackageEntity packageEntity;
-	
+
 	public StaxMedicineBuilder() {
 		xmlInputFactory = XMLInputFactory.newInstance();
 	}
@@ -46,12 +51,12 @@ public class StaxMedicineBuilder extends AbstractMedicineBuilder {
 		try {
 			reader = xmlInputFactory.createXMLEventReader(new FileInputStream(xmlFilePath));
 		} catch (FileNotFoundException | XMLStreamException e) {
-			throw new MedicinesException(StaxMedicineBuilder.class + ": file not found or xml stream exception");
+			throw new MedicinesException("File not found or xml stream exception: " + xmlFilePath);
 		}
 		try {
 			parseInternal();
 		} catch (XMLStreamException e) {
-			throw new MedicinesException(StaxMedicineBuilder.class + ": Error while parsing");
+			throw new MedicinesException("Error while parsing", e);
 		}
 	}
 
@@ -60,7 +65,8 @@ public class StaxMedicineBuilder extends AbstractMedicineBuilder {
 			XMLEvent nextEvent = reader.nextEvent();
 			if (nextEvent.isStartElement()) {
 				StartElement startElement = nextEvent.asStartElement();
-				switch (startElement.getName().getLocalPart()) {
+				String localStartName = startElement.getName().getLocalPart();
+				switch (localStartName) {
 				case MedsParameter.MEDICINES:
 					medicines = new ArrayList<>();
 					break;
@@ -100,7 +106,8 @@ public class StaxMedicineBuilder extends AbstractMedicineBuilder {
 					QName qDistributedByPrescription = new QName(MedsParameter.ATTRIBUTE_DISTRIBUTED_BY_PRESCRIPTION);
 					Attribute aDistributedByPrescription = startElement.getAttributeByName(qDistributedByPrescription);
 					if (aDistributedByPrescription != null) {
-						version.setDistributedByPrescription(Boolean.parseBoolean(aDistributedByPrescription.getValue()));
+						version.setDistributedByPrescription(
+								Boolean.parseBoolean(aDistributedByPrescription.getValue()));
 					}
 					break;
 				case MedsParameter.CERTIFICATE:
@@ -162,13 +169,14 @@ public class StaxMedicineBuilder extends AbstractMedicineBuilder {
 					dosage.setDosageMaximumUsePerDay(Integer.parseInt(nextEvent.asCharacters().getData()));
 					break;
 				default:
-					// logger.log(Level.INFO, startElement.getName().getLocalPart());
+					logger.log(Level.INFO, localStartName);
 					break;
 				}
 			}
 			if (nextEvent.isEndElement()) {
 				EndElement endElement = nextEvent.asEndElement();
-				switch (endElement.getName().getLocalPart()) {
+				String localEndName = endElement.getName().getLocalPart();
+				switch (localEndName) {
 				case MedsParameter.MEDICINE:
 					medicines.add(medicine);
 					break;
@@ -194,7 +202,7 @@ public class StaxMedicineBuilder extends AbstractMedicineBuilder {
 					dosages.add(dosage);
 					break;
 				default:
-					// logger.log(Level.INFO, endElement.getName().getLocalPart());
+					logger.log(Level.DEBUG, localEndName);
 					break;
 				}
 			}

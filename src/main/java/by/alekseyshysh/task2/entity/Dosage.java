@@ -6,15 +6,15 @@ public class Dosage {
 	private int dosageActiveAgent;
 	private int dosageMaximumUsePerDay;
 
+	public Dosage() {
+	}
+
 	public Dosage(String dosageDescription, int dosageActiveAgent, int dosageMaximumUsePerDay) {
 		this.dosageDescription = dosageDescription;
 		this.dosageActiveAgent = dosageActiveAgent;
 		this.dosageMaximumUsePerDay = dosageMaximumUsePerDay;
 	}
 
-	public Dosage() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public String getDosageDescription() {
 		return dosageDescription;

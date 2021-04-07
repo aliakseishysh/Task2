@@ -1,27 +1,16 @@
 package by.alekseyshysh.task2.builder;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.stream.XMLStreamException;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.xml.sax.SAXException;
 
-import by.alekseyshysh.task2.builder.SaxMedicineBuilder;
-import by.alekseyshysh.task2.builder.StaxMedicineBuilder;
 import by.alekseyshysh.task2.entity.Certificate;
 import by.alekseyshysh.task2.entity.Dosage;
 import by.alekseyshysh.task2.entity.Medicine;
@@ -57,9 +46,10 @@ public class MedicinesStAXParserTest {
 				add(new Version("pills", true, certificate, packageEntity, dosages));
 			}
 		};
+		List<Medicine> medicines = builder.getMedicines();
 		Medicine expected = new Medicine("i1", "IBUPROFEN", "MINSK-PHARM", "Non-narcotic analgesics", analogs,
 				versions);
-		List<Medicine> medicines = builder.getMedicines();
-		Assert.assertEquals(expected, medicines.get(0));
+		Medicine actual = medicines.get(0);
+		Assert.assertEquals(expected, actual);
 	}
 }
