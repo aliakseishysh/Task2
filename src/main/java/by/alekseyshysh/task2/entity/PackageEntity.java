@@ -15,6 +15,10 @@ public class PackageEntity {
 		this.price = price;
 	}
 
+	public PackageEntity(PackageEntity packageEntity) {
+		this(packageEntity.packageType, packageEntity.elementsCountIn, packageEntity.price);
+	}
+
 	public String getPackageType() {
 		return packageType;
 	}

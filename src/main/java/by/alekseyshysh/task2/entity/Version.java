@@ -1,6 +1,5 @@
 package by.alekseyshysh.task2.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +23,11 @@ public class Version {
 		this.dosages = dosages;
 	}
 
+	public Version(Version version) {
+		this(version.distributionVersion, version.distributedByPrescription, version.getCertificate(),
+				version.getPackageEntity(), version.getDosages());
+	}
+
 	public boolean isDistributedByPrescription() {
 		return distributedByPrescription;
 	}
@@ -41,31 +45,37 @@ public class Version {
 	}
 
 	/**
-	 * TODO it's ok? 
-	 * @see Certificate#Certificate(Certificate)
+	 * TODO it's ok?
+	 * 
+	 * @see Certificate#Certificate(Certificate) or i don't need to create new
+	 *      object because i have all immutable and primary types in this class
 	 */
 	public Certificate getCertificate() {
 		return new Certificate(certificate);
 	}
 
 	public void setCertificate(Certificate certificate) {
-		this.certificate = certificate;
+		this.certificate = new Certificate(certificate);
 	}
 
 	public PackageEntity getPackageEntity() {
-		return packageEntity;
+		return new PackageEntity(packageEntity);
 	}
 
 	public void setPackageEntity(PackageEntity packageEntity) {
-		this.packageEntity = packageEntity;
+		this.packageEntity = new PackageEntity(packageEntity);
 	}
 
 	public List<Dosage> getDosages() {
-		return new ArrayList<>(dosages);
+		// TODO return new ArrayList<>(dosages); it creates new Dosage objects in
+		// List<Dosage>?
+		return dosages.stream().map(Dosage::new).collect(Collectors.toList());
 	}
 
 	public void setDosages(List<Dosage> dosages) {
-		this.dosages = new ArrayList<>(dosages);
+		// this.dosages = new ArrayList<>(dosages); it creates new Dosage objects in
+		// List<Dosage>?
+		this.dosages = dosages.stream().map(Dosage::new).collect(Collectors.toList());
 	}
 
 	@Override

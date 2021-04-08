@@ -15,6 +15,9 @@ public class Dosage {
 		this.dosageMaximumUsePerDay = dosageMaximumUsePerDay;
 	}
 
+	public Dosage(Dosage dosage) {
+		this(dosage.dosageDescription, dosage.dosageActiveAgent, dosage.dosageMaximumUsePerDay);
+	}
 
 	public String getDosageDescription() {
 		return dosageDescription;

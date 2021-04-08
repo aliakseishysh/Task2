@@ -1,8 +1,7 @@
 package by.alekseyshysh.task2.entity;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Medicine {
 
@@ -59,19 +58,29 @@ public class Medicine {
 	}
 
 	public List<String> getAnalogs() {
-		return new ArrayList<>(analogs);
+		// TODO return new ArrayList<>(analogs); it creates new String objects
+		// or just links to strings, but String is immutable
+		// so it's ok to not create new strings via map method?
+		// return new ArrayList<>(analogs);
+		return analogs.stream().map(String::new).collect(Collectors.toList());
 	}
 
 	public void setAnalogs(List<String> analogs) {
-		this.analogs = new ArrayList<>(analogs);
+		// TODO return new ArrayList<>(analogs); it creates new String objects
+		// or just links to strings, but String is immutable
+		// so it's ok to not create new strings via map method?
+		// this.analogs = new ArrayList<>(analogs);
+		this.analogs = analogs.stream().map(String::new).collect(Collectors.toList());
 	}
 
 	public List<Version> getVersions() {
-		return new ArrayList<>(versions);
+		// return new ArrayList<>(versions); it creates new Version objects?
+		return versions.stream().map(Version::new).collect(Collectors.toList());
 	}
 
 	public void setVersions(List<Version> versions) {
-		this.versions = new ArrayList<>(versions);
+		// this.versions = new ArrayList<>(versions); it creates new Version objects?
+		this.versions = versions.stream().map(Version::new).collect(Collectors.toList());
 	}
 
 	@Override

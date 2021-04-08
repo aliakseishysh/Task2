@@ -14,17 +14,28 @@
         </xs:complexType>
     </xs:element>
 
+   
     <!-- CHILD ELEMENT OF ROOT -->
-    <xs:complexType name="medicine-type">
+   <xs:complexType name="medicine-type">
+       <xs:complexContent>
+           <xs:extension base="medicine-base-type">
+               <xs:sequence>
+                   <xs:element name="analogs" type="analogs-type"/>
+                   <xs:element name="versions" type="versions-type"/>
+               </xs:sequence>
+           </xs:extension>
+       </xs:complexContent>
+   </xs:complexType>
+    
+   <xs:complexType name="medicine-base-type">
         <xs:sequence>
             <xs:element name="name" type="name-type"/>
             <xs:element name="pharm" type="pharm-type"/>
             <xs:element name="group" type="group-type"/>
-            <xs:element name="analogs" type="analogs-type"/>
-            <xs:element name="versions" type="versions-type"/>
         </xs:sequence>
         <xs:attribute name="id" type="medicine-id-type" use="required"/>
     </xs:complexType>
+
 
     <!-- ID OF SPECIFIC MEDICINE -->
     <xs:simpleType name="medicine-id-type">

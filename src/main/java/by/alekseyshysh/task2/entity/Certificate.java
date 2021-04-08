@@ -15,9 +15,9 @@ public class Certificate {
 	}
 
 	public Certificate(Certificate certificate) {
-		new Certificate(certificate.certificateNumber, certificate.certificateIssuedDate,
-				certificate.certificateIssuedTime, certificate.certificateExpiresDate,
-				certificate.certificateExpiresTime, certificate.certificateRegisteredOrganization);
+		this(certificate.certificateNumber, certificate.certificateIssuedDate, certificate.certificateIssuedTime,
+				certificate.certificateExpiresDate, certificate.certificateExpiresTime,
+				certificate.certificateRegisteredOrganization);
 	}
 
 	public Certificate(long certificateNumber, LocalDate certificateIssuedDate, LocalTime certificateIssuedTime,
