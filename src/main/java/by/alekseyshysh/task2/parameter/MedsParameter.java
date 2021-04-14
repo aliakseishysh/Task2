@@ -5,8 +5,6 @@ public final class MedsParameter {
 	private MedsParameter() {
 	}
 	
-	public static final String NAMESPACE_PREFIX = "tns";
-	public static final String NAMESPACE_PREFIX_WITH_COLON = "tns:";
 	public static final String MEDICINES = "medicines";
 	public static final String MEDICINE = "medicine";
 	public static final String ATTRIBUTE_ID = "id";

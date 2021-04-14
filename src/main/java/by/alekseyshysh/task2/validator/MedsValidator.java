@@ -28,12 +28,12 @@ public class MedsValidator {
 	private MedsValidator() {
 	}
 
-	public static boolean validateXMLFile(String xmlPath, String xsdPath)
-			throws MedicinesException {
-
-		SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+	public static boolean validateXMLFile(String xmlPath, String xsdPath) throws MedicinesException {
+		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		try {
-			Schema schema = factory.newSchema(new File(xsdPath));
+			schemaFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+			schemaFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+			Schema schema = schemaFactory.newSchema(new File(xsdPath));
 			Validator validator = schema.newValidator();
 			SAXParserFactory parserFactory = SAXParserFactory.newInstance();
 			parserFactory.setNamespaceAware(true);

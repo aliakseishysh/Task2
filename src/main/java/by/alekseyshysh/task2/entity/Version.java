@@ -67,14 +67,10 @@ public class Version {
 	}
 
 	public List<Dosage> getDosages() {
-		// TODO return new ArrayList<>(dosages); it creates new Dosage objects in
-		// List<Dosage>?
 		return dosages.stream().map(Dosage::new).collect(Collectors.toList());
 	}
 
 	public void setDosages(List<Dosage> dosages) {
-		// this.dosages = new ArrayList<>(dosages); it creates new Dosage objects in
-		// List<Dosage>?
 		this.dosages = dosages.stream().map(Dosage::new).collect(Collectors.toList());
 	}
 
