@@ -1,10 +1,6 @@
 package by.alekseyshysh.task2.parameter;
 
 public final class MedsParameter {
-
-	private MedsParameter() {
-	}
-	
 	public static final String MEDICINES = "medicines";
 	public static final String MEDICINE = "medicine";
 	public static final String ATTRIBUTE_ID = "id";
@@ -31,4 +27,7 @@ public final class MedsParameter {
 	public static final String DOSAGE_DESCRIPTION = "dosage-description";
 	public static final String DOSAGE_ACTIVE_AGENT = "dosage-active-agent";
 	public static final String DOSAGE_MAXIMUM_USE_PER_DAY = "dosage-maximum-use-per-day";
+
+	private MedsParameter() {
+	}
 }

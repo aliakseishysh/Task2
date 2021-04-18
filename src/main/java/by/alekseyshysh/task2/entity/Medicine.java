@@ -1,6 +1,5 @@
 package by.alekseyshysh.task2.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
